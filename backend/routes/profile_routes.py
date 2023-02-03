@@ -2,7 +2,7 @@ from flask import Flask, Blueprint
 
 from db import db  
 
-profile = Blueprint("user", __name__, url_prefix="/user")
+profile = Blueprint("profile", __name__, url_prefix="/profile")
 
 profile.route("/")
 def home():
