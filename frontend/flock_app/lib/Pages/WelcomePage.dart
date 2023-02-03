@@ -2,6 +2,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
+import './LoginPage.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -60,7 +61,7 @@ class WelcomePage extends StatelessWidget {
                         MaterialStateProperty.all(const EdgeInsets.all(10)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));},
                 child: const Text('Login', style: TextStyle(fontSize: 22))),
                         ),
                         Text(" "),
