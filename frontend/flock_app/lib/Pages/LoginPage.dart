@@ -2,6 +2,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
+import './SwipePage.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -55,7 +56,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         ),
                         ),
-                onPressed: () {},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => SwipePage()));},
                 child: const Text('        Login       ')),
       ],
 
