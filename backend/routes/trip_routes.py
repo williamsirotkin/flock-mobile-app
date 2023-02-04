@@ -84,3 +84,10 @@ def create_trip():
         return Response(status=201)
     except:
         return Response(status=403)
+
+@trip.route("/get_my_trips/<string:username>")
+def get_my_trips(username):
+
+    data = db.profile.find_one({'username' : username})
+
+    return jsonify(data['my_trips'])
