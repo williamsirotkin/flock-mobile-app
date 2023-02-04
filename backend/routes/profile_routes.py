@@ -22,6 +22,14 @@ def get_random_username():
     data = db.profile.find({}, {"username" : True})
     return json.loads(json_util.dumps(random.choice(list(data))))
 
+#queries users based on certain input conditions
+@profile.route("/getProfileQuery", method = ['GET'])
+def get_profile_query(age_min, age_max):
+
+    data = db.profile.find({'age': {'$gte': age_min}, 'age': {'$lte': age_max}})
+    return json.loads(json_util.dumps(random.choice(list(data))))
+
+
 @profile.route("/add", methods=['POST'])
 def add_profile():
     data = request.json
