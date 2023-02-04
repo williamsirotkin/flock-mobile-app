@@ -4,6 +4,8 @@ from bson import json_util, ObjectId
 from db import db  
 import random
 
+#ph = PasswordHasher()
+
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
 @profile.route("/")
@@ -95,8 +97,8 @@ def login():
 
     if password == user['password']:
         return Response(status=200)
-    
-    return Response(status=403)
+    else:
+        return Response(status=403)
 
 
 
