@@ -44,17 +44,17 @@ class MenuProvider extends StatelessWidget {
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
                 onPressed: () {},
-                child: Text("Safety"),
+                child: Image(image: AssetImage('assets/images/safety.png')),
         ),
         title: const Text('Find Your Flock🕊', style: TextStyle(fontSize: 20)),
         actions: <Widget>[
           TextButton(
             onPressed: () {},
-            child: Text("Inbox")
+            child: Image(image: AssetImage('assets/images/inbox.png')),
           ),
           TextButton(
             onPressed: () {},
-            child: Text("Settings"),
+            child: Image(image: AssetImage('assets/images/settings.png')),
           ),
         ],
      ),
