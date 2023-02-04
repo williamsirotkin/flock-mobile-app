@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, request, Response
 import json
 from bson import json_util, ObjectId
 from db import db  
+import random
 
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
@@ -14,6 +15,11 @@ def get_profile(username):
 
     data = db.profile.find_one({'username' : username})
     return json.loads(json_util.dumps(data))
+
+@profile.route("/getRandomUsername", methods = ['GET'])
+def get_random_username():
+    data = db.profile.find({}, {"username" : True})
+    return json.loads(json_util.dumps(random.choice(list(data))))
 
 @profile.route("/add", methods=['POST'])
 def add_profile():
