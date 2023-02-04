@@ -5,9 +5,10 @@ import '../main.dart';
 import '../Widgets/MenuProvider.dart';
 
 class InboxPage extends StatelessWidget {
+  var page, user;
+    InboxPage({this.page, this.user});
   @override
   Widget build(BuildContext context) {
-   // var appState = context.watch<MyAppState>();
 
     return ListView(
       shrinkWrap: true,

@@ -6,6 +6,8 @@ import './WelcomePage.dart';
 import '../Widgets/MenuProvider.dart';
 
 class SettingsPage extends StatelessWidget {
+  var page, user;
+    SettingsPage({this.page, this.user});
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();

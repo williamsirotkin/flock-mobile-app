@@ -6,6 +6,8 @@ import './ProfilePage.dart';
 import '../Widgets/MenuProvider.dart';
 
 class EditProfilePage extends StatelessWidget {
+  var user;
+  EditProfilePage({this.user});
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();
@@ -20,7 +22,7 @@ class EditProfilePage extends StatelessWidget {
                         MaterialStateProperty.all(const EdgeInsets.all(20)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (ProfilePage()))));},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (ProfilePage(user: user)), user: user)));},
                 child: const Text('Done')),
         Center (child: Text("My Profile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),)),
         Text(" "),
@@ -34,7 +36,7 @@ class EditProfilePage extends StatelessWidget {
                         MaterialStateProperty.all(const EdgeInsets.all(20)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (ProfilePage()))));},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (ProfilePage(user: user)), user: user)));},
                 child: const Text('Done')),
       ],
     );

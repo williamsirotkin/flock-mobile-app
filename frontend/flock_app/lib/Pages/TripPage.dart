@@ -11,6 +11,8 @@ import '../Widgets/ChatWidget.dart';
 
 class TripPage extends StatelessWidget {
   @override
+  var user;
+  TripPage({this.user});
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,

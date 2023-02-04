@@ -7,6 +7,8 @@ import './TripPage.dart';
 import '../Widgets/MyTripWidget.dart';
 
 class MyTripsPage extends StatelessWidget {
+  var user;
+  MyTripsPage({this.user});
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();

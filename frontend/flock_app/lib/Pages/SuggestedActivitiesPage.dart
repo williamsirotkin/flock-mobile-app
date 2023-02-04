@@ -15,7 +15,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SuggestedActivitiesPage extends StatelessWidget {
   late Future<Places> futurePlaces;
-
+  var user;
+    SuggestedActivitiesPage({this.user});
   @override
   Widget build(BuildContext context) {
     Future<Places> fetchPlaces() async {

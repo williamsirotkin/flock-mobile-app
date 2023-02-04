@@ -6,6 +6,8 @@ import './MenuProvider.dart';
 import '../Pages/TripDetailsPage.dart';
 
 class FindTripWidget extends StatelessWidget {
+  var page, user;
+  FindTripWidget({this.page, this.user});
   @override
   Widget build(BuildContext context) {
     return Container(

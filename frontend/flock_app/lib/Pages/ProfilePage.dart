@@ -6,24 +6,32 @@ import '../Widgets/MenuProvider.dart';
 import './EditProfilePage.dart';
 
 class ProfilePage extends StatelessWidget {
+  var user, profileClickedOn;
+  ProfilePage({this.user, this.profileClickedOn});
+
+
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();
-
-
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Text("Profile Page"),
-        ElevatedButton(
+    Widget showEdit(String user, String profileClickedOn) {
+    if (user == profileClickedOn) {
+      return ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green),
                     padding:
                         MaterialStateProperty.all(const EdgeInsets.all(20)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: EditProfilePage())));},
-                child: const Text('Edit Profile')),
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: EditProfilePage(user: user))));},
+                child: const Text('Edit Profile'));
+    } return Text("");
+      }
+
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        Text("Profile Page"),
+        showEdit(user, profileClickedOn),
       ],
     );
   }

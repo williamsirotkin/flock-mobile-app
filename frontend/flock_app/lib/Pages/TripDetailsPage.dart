@@ -7,12 +7,14 @@ import './FindTripsPage.dart';
 import '../Widgets/SuggestedPlaceWidget.dart';
 
 class TripDetailsPage extends StatelessWidget {
+  var user;
+  TripDetailsPage({this.user});
   @override
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
       children: [
-        BackButtonWidget(page: FindTripsPage()),
+        BackButtonWidget(page: FindTripsPage(user: user)),
         Text("Trip Details Page"),
       ],
     );

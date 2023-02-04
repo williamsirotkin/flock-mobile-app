@@ -4,9 +4,12 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 
 class ChatMemberWidget extends StatelessWidget {
+  var user;
+  ChatMemberWidget({this.user});
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();
+
 
     return ListView(
       shrinkWrap: true,
