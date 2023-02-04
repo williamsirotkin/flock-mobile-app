@@ -79,8 +79,8 @@ def like():
 def hate():
     data = request.json
 
-    hater = request['hater']
-    hatee = request['hatee']
+    hater = data['hater']
+    hatee = data['hatee']
 
     try:
         db.profile.update_one({'username' : hater}, {'$push' : {'hater' : hatee}})
