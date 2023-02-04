@@ -53,7 +53,7 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
-        'password' : ph.hash(request['password'])
+        'password' : request['password']
     }
 
     db.profile.insert_one(user)
