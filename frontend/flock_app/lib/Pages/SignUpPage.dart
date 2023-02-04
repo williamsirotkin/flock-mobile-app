@@ -6,7 +6,48 @@ import 'package:flutter_spinbox/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+enum APIValues {
+  art_gallery,
+  bar,
+  gym,
+  night_club,
+  library,
+  cafe,
+  campground,
+  casino,
+  shopping_mall,
+  park,
+  museum,
+  zoo,
+  airport,
+  bicycle_store
+}
+
+enum UserFacing {
+  art,
+  drinking,
+  gym,
+  nightlife,
+  learning,
+  coffee,
+  outdoors,
+  gambling,
+  shopping,
+  hiking,
+  museums,
+  wildlife,
+  aviation,
+  biking
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   String firstName = "";
   String lastName = "";
   String email = "";
@@ -15,6 +56,7 @@ class SignUpPage extends StatelessWidget {
   String country = "";
   String socialMediaLink = "";
   double age = 0;
+  final List<String> _filters = <String>[];
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +88,19 @@ class SignUpPage extends StatelessWidget {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Last Name',
+                )),
+          ),
+          SizedBox(
+            height: 50,
+            width: 200,
+            child: TextField(
+                onChanged: (newText) {
+                  password = newText;
+                },
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Username',
                 )),
           ),
           SizedBox(
@@ -129,6 +184,38 @@ class SignUpPage extends StatelessWidget {
               )
             ],
           ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Interests:'),
+              const SizedBox(height: 5.0),
+              Wrap(
+                spacing: 5.0,
+                children: UserFacing.values.map((UserFacing interest) {
+                  return FilterChip(
+                    label: Text(interest.name),
+                    backgroundColor: Colors.blue,
+                    selected: _filters.contains(interest.name),
+                    onSelected: (bool value) {
+                      setState(() {
+                        if (value) {
+                          if (!_filters.contains(interest.name)) {
+                            _filters.add(interest.name);
+                          }
+                        } else {
+                          _filters.removeWhere((String name) {
+                            return name == interest.name;
+                          });
+                        }
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 10.0),
+              Text('Looking for: ${_filters.join(', ')}')
+            ],
+          ),
           ElevatedButton(
               style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -144,7 +231,7 @@ class SignUpPage extends StatelessWidget {
                 createAlbum("newUser");
               },
               child:
-                  const Text('Create Account', style: TextStyle(fontSize: 22))),
+                  const Text('Create Account', style: TextStyle(fontSize: 22)))
         ]),
       ),
     );
