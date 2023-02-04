@@ -70,6 +70,9 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Center(
           child: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(" "),
+          Text(" "),
+          Text(' '),
           Image(image: AssetImage('assets/images/LoginPageImage.png')),
           SizedBox(
             height: 50,
@@ -84,6 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'First Name',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -97,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Last Name',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -110,6 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Username',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -123,6 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Email',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -136,6 +143,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Password',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -149,6 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'City',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -162,6 +171,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Country',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -175,10 +185,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Social Media Link',
                 )),
           ),
+          Text(" "),
           Row(
             children: [
               Text("                         "),
-              Text("Age:   "),
+              Text("Age:   ", style: TextStyle(fontSize: 15)),
               SizedBox(
                 height: 50,
                 width: 150,
@@ -191,10 +202,15 @@ class _SignUpPageState extends State<SignUpPage> {
               )
             ],
           ),
+          Text(" "),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Interests:'),
+              Text(
+                'Interests:',
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(" "),
               const SizedBox(height: 5.0),
               Wrap(
                 spacing: 5.0,
@@ -220,7 +236,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 }).toList(),
               ),
               const SizedBox(height: 10.0),
-              Text('Looking for: ${_filters.join(', ')}')
+              Text('Your Interests: ${_filters.join(', ')}',
+                  style: TextStyle(fontSize: 15)),
+              Text(' ')
             ],
           ),
           ElevatedButton(
@@ -245,7 +263,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 createAlbum("newUser");
               },
               child:
-                  const Text('Create Account', style: TextStyle(fontSize: 22)))
+                  const Text('Create Account', style: TextStyle(fontSize: 22))),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
         ]),
       )),
     );
