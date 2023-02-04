@@ -48,12 +48,13 @@ def get_profile_query(age_min, age_max):
 @profile.route("/add", methods=['POST'])
 def add_profile():
     data = request.json
+    #print(data)
     user = {
         'first_name' : data['first_name'],
         'city' : data['city'],
         'country' : data['country'],
         'email' : data['email'],
-        'interests' : [],
+        'interests' : data['interests'],
         'last_name' : data['last_name'],
         'social_media' : [],
         'username' : data['username'],

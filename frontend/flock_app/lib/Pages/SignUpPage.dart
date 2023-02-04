@@ -259,13 +259,13 @@ class _SignUpPageState extends State<SignUpPage> {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{
-        'first_name': first_name,
+      body: jsonEncode(<String, Object>{
+        'first_name': "hi",
         'city': city,
         'country': country,
         'email': email,
         'last_name': last_name,
-        //'social_media': [],
+        'interests': [1, 2],
         'username': username,
         'age': age.toString(),
         'password': password,
