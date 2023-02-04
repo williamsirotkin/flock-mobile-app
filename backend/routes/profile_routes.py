@@ -3,7 +3,9 @@ import json
 from bson import json_util, ObjectId
 from db import db  
 import random
-#import argon2
+from argon2 import PasswordHasher
+
+ph = PasswordHasher()
 
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
@@ -54,8 +56,9 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
-        'likee' : []
+        'password' : ph.hash(request['password'])
     }
+
     db.profile.insert_one(user)
     return Response(status=201)
 
@@ -85,19 +88,19 @@ def hate():
     except:
         return Response(status=403)
 
-'''
-@profile.route("/login")
+
+@profile.route("/login", methods=['PUT'])
 def login():
     data = request.json
     username = data['username']
     password = data['password']
     user = db.profile.find_one({'username' : username})
-
-    if user['password'] == argon2.hash_password(password):
+    
+    if ph.verify(user['password'], password):
         return Response(status=200)
     else:
         return Response(status=403)
-'''
+
 
 
 

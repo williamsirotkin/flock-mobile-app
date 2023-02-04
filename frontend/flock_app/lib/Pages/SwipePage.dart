@@ -8,8 +8,9 @@ import 'dart:convert';
 import '../Models/Person.dart';
 import '../Widgets/MenuProvider.dart';
 import '../Models/Usernames.dart';
-import '../Widgets/FetchUsernameWidget.dart';
-
+import '../Calls/FetchUsernameCall.dart';
+import '../Calls/LikeCall.dart';
+import '../Calls/HateCall.dart';
 
 class SwipePage extends StatelessWidget {
   var username;
@@ -40,22 +41,12 @@ class SwipePage extends StatelessWidget {
       children: [
         Swipe(child: Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 440),
         onSwipeLeft: () {
+          hate(Future.value("stephenenmeth4"), Future.value(username));
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
   },
   onSwipeRight: () {
-    Future<http.Response> like() async {
-    return http.put(
-      Uri.parse('http://127.0.0.1:5000/profile/like'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'liker': "stephennemeth4",
-        'likee': await username,
-      }),
-    );
-  }
-  like();
+    like(Future.value("stephenenmeth4"),Future.value(username));
+  
     /*
     FutureBuilder<Usernames>(
         future: fetchUsername(),
