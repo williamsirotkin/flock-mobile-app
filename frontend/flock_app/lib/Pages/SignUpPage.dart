@@ -27,10 +27,10 @@ enum UserFacing {
   gambling,
   shopping,
   hiking,
-  /*museums,
+  museums,
   wildlife,
   aviation,
-  biking*/
+  biking
 }
 
 final entries = {
@@ -68,6 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+          child: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Image(image: AssetImage('assets/images/LoginPageImage.png')),
           SizedBox(
@@ -246,7 +247,7 @@ class _SignUpPageState extends State<SignUpPage> {
               child:
                   const Text('Create Account', style: TextStyle(fontSize: 22)))
         ]),
-      ),
+      )),
     );
   }
 
