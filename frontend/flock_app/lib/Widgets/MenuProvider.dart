@@ -6,6 +6,7 @@ import '../Pages/SwipePage.dart';
 import '../Pages/ProfilePage.dart';
 import '../Pages/MyTripsPage.dart';
 import '../Pages/FindTripsPage.dart';
+import '../Pages/FriendsPage.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -26,7 +27,7 @@ class MenuProvider extends StatelessWidget {
         case 3:
           return FindTripsPage();
         case 4:
-            return SwipePage();
+            return FriendsPage();
       }
       return SwipePage();
     }
