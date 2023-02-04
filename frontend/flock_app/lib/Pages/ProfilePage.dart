@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import '../Widgets/MenuProvider.dart';
+import './EditProfilePage.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class ProfilePage extends StatelessWidget {
                         MaterialStateProperty.all(const EdgeInsets.all(20)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: EditProfilePage())));},
                 child: const Text('Edit Profile')),
       ],
     );

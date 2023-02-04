@@ -7,6 +7,7 @@ import './MyTripsPage.dart';
 import '../Widgets/MenuProvider.dart';
 import './TripDetailsPage.dart';
 import '../Widgets/ChatSettingsBarWidget.dart';
+import '../Widgets/ChatWidget.dart';
 
 class TripPage extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class TripPage extends StatelessWidget {
       children: [
         BackButtonWidget(page: MyTripsPage()),
         ChatSettingsBarWidget(),
+      ChatWidget(),
       ],
     );
   }
