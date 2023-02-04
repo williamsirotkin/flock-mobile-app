@@ -10,7 +10,7 @@ import '../Pages/FriendsPage.dart';
 import '../Pages/SafetyPage.dart';
 import '../Pages/InboxPage.dart';
 import '../Pages/SettingsPage.dart';
-import './FetchUsernameWidget.dart';
+import '../Calls/FetchUsernameCall.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
