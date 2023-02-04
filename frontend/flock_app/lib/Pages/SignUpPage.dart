@@ -203,6 +203,21 @@ class _SignUpPageState extends State<SignUpPage> {
             ],
           ),
           Text(" "),
+          SizedBox(
+            height: 100,
+            width: 300,
+            child: TextField(
+                minLines: 1,
+                maxLines: 5,
+                onChanged: (newText) {
+                  //socialMediaLink = newText;
+                },
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Bio',
+                )),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
