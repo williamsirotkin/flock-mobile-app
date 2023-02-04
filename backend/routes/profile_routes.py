@@ -46,12 +46,11 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
-        'likee' : []
     }
     db.profile.insert_one(user)
     return Response(status=201)
 
-@profile.route("/like")
+@profile.route("/like", methods=['PUT'])
 def like():
     data = request.json
 
