@@ -8,6 +8,7 @@ import '../Pages/MyTripsPage.dart';
 import '../Pages/FindTripsPage.dart';
 import '../Pages/FriendsPage.dart';
 import '../Pages/SafetyPage.dart';
+import '../Pages/InboxPage.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -54,7 +55,7 @@ class MenuProvider extends StatelessWidget {
         title: const Text('Find Your Flock🕊', style: TextStyle(fontSize: 20)),
         actions: <Widget>[
           TextButton(
-            onPressed: () {},
+            onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: InboxPage())));},
             child: Image(image: AssetImage('assets/images/inbox.png')),
           ),
           TextButton(
