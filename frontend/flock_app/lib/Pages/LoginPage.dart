@@ -7,6 +7,8 @@ import '../Widgets/MenuProvider.dart';
 
 
 class LoginPage extends StatelessWidget {
+  var username = "";
+  var password = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold (
@@ -26,7 +28,9 @@ class LoginPage extends StatelessWidget {
         SizedBox (
         height: 50,
         width: 200,
-        child: TextField(obscureText: false,
+        child: TextField(onChanged: (newText) {
+            username = newText;
+        },obscureText: false,
           decoration: InputDecoration(
            border: OutlineInputBorder(),
           labelText: 'Username',
@@ -37,7 +41,9 @@ class LoginPage extends StatelessWidget {
         SizedBox (
         height: 50,
         width: 200,
-        child: TextField(obscureText: true,
+        child: TextField(onChanged: (newText) {
+            password = newText;
+        },obscureText: true,
           decoration: InputDecoration(
            border: OutlineInputBorder(),
           labelText: 'Password',
@@ -58,7 +64,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         ),
                         ),
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage())));},
+                onPressed: () {print("Hello world"); Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4"))));},
                 child: const Text('        Login       ')),
       ],
 
