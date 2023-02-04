@@ -44,10 +44,26 @@ def add_profile():
         'username' : request['username'],
         'age' : request['age'],
         'bio' : request['bio'],
-        'profile_pic_url' : request['profile_pic_url']
+        'profile_pic_url' : request['profile_pic_url'],
+        'liker' : [],
+        'likee' : []
     }
     db.profile.insert_one(user)
     return Response(status=201)
+
+@profile.route("/like")
+def like():
+    data = request.json
+
+    liker = request['liker']
+    likee = request['likee']
+
+    try:
+        db.profile.update_one({'username' : liker}, {'$push' : {'liker' : likee}})
+        return Response(status=200)
+    except:
+        return Response(status=403)
+
 
 '''
 @profile.route("/login")
