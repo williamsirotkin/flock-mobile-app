@@ -7,6 +7,7 @@ import '../Pages/ProfilePage.dart';
 import '../Pages/MyTripsPage.dart';
 import '../Pages/FindTripsPage.dart';
 import '../Pages/FriendsPage.dart';
+import '../Pages/SafetyPage.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -47,7 +48,7 @@ class MenuProvider extends StatelessWidget {
                         MaterialStateProperty.all(const EdgeInsets.all(0)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SafetyPage())));},
                 child: Image(image: AssetImage('assets/images/safety.png')),
         ),
         title: const Text('Find Your Flock🕊', style: TextStyle(fontSize: 20)),
