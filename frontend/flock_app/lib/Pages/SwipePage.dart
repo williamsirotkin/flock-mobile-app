@@ -11,10 +11,9 @@ import '../Models/Usernames.dart';
 import '../Calls/FetchUsernameCall.dart';
 import '../Calls/LikeCall.dart';
 import '../Calls/HateCall.dart';
-
 class SwipePage extends StatelessWidget {
-  var username;
-  SwipePage({this.username});
+  var username, user;
+  SwipePage({this.username, this.user});
   late Future<Person> futurePerson;
   //late Future<Usernames> futureUsername;
 
@@ -45,7 +44,7 @@ class SwipePage extends StatelessWidget {
           hate(Future.value("stephennemeth4"), Future.value(username));
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
   },
-  onSwipeRight: () {
+  onSwipeRight: () async {
     like(Future.value("stephenenmeth4"),Future.value(username));
   
     /*

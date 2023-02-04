@@ -265,10 +265,12 @@ class _SignUpPageState extends State<SignUpPage> {
         'country': country,
         'email': email,
         'last_name': last_name,
-        //'social_media': socialMediaLink,
+        //'social_media': [],
         'username': username,
         'age': age.toString(),
-        'password': password
+        'password': password,
+        'bio': "",
+        'profile_pic_url': "",
       }),
     );
   }

@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () async {
                   var response = await login(username, password);
                   if (response.statusCode == 200) {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4"))));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4", user: username))));
                   } else {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: LoginPage(loginError: true))));
                   }
