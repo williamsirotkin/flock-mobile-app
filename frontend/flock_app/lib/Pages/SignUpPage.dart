@@ -1,5 +1,5 @@
 import 'dart:collection';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -9,8 +9,18 @@ import 'package:flutter_spinbox/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+/*
+Future getImage() async {
+  final ImagePicker _picker = ImagePicker();
+  final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+  print("LOOK HERE");
+  print(image);
+  print("LOOK HERE 2");
+  return await image;
+}
+*/
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -51,6 +61,7 @@ final entries = {
 };
 
 class _SignUpPageState extends State<SignUpPage> {
+  var image;
   String first_name = "";
   String last_name = "";
   String username = "";
@@ -161,6 +172,20 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Country',
                 )),
           ),
+          ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)
+                        ),
+                  ),
+                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                    padding:
+                        MaterialStateProperty.all(const EdgeInsets.all(20)),
+                    textStyle: MaterialStateProperty.all(
+                        const TextStyle(fontSize: 14, color: Colors.white))),
+                onPressed: () async {},
+                child: const Text('Upload Image')),
           SizedBox(
             height: 50,
             width: 200,
@@ -243,6 +268,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 //print(interests);
                 createAlbum("newUser");
               },
+              
               child:
                   const Text('Create Account', style: TextStyle(fontSize: 22)))
         ]),
@@ -273,3 +299,38 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
+/*
+uploadToS3 (image)async{
+    var postUri = Uri.parse("flock-access-4epyut6gke8z9mtbow4eif9hgmmgruse1a-s3alias"); /// url
+    var request = http.MultipartRequest("POST", postUri);
+    Map<String, String> headers = { "access-token": "dataStorage.read(authToken)"}; /// header
+    request.headers.addAll(headers);
+  
+    request.files.add(
+        File(await image!.path)); /// file that you need to send s3
+    var response = await request.send();
+    var responsed = await http.Response.fromStream(response);
+  
+    final responseData = json.decode(responsed.body);
+  
+    if (response.statusCode == 200) {
+  /// if response.statuscode is 200 then you will get a image id from aws 
+      var imagedetails= jsonDecode(responsed.body);
+  
+      /// s3 image id 
+      print(imagedetails["imageId"]);
+    }
+}
+
+uploadToS3(image) async {
+  var request = http.MultipartRequest("POST", Uri.parse("https://flock-pictures.s3.amazonaws.com/4j+1GOdoBnWmQOKRcgdPlGa8FC2pdhsy9Q//Xwox"));
+  var multipartFile = await http.MultipartFile.fromBytes(
+    "file", 
+    await image.readAsBytes(), 
+    filename: image.path
+  );
+  request.files.add(multipartFile);
+  return await request.send();
+}
+*/
