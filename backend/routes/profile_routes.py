@@ -23,7 +23,7 @@ def get_random_username():
     return json.loads(json_util.dumps(random.choice(list(data))))
 
 #queries users based on certain input conditions
-@profile.route("/getProfileQuery", method = ['GET'])
+@profile.route("/getProfileQuery", methods = ['GET'])
 def get_profile_query(age_min, age_max):
 
     data = db.profile.find({'age': {'$gte': age_min}, 'age': {'$lte': age_max}})
@@ -54,8 +54,8 @@ def add_profile():
 def like():
     data = request.json
 
-    liker = request['liker']
-    likee = request['likee']
+    liker = data['liker']
+    likee = data['likee']
 
     try:
         db.profile.update_one({'username' : liker}, {'$push' : {'liker' : likee}})
