@@ -23,7 +23,7 @@ def add_profile():
         "last_name" : data['last_name'],
         "email" : data['email']
     }
-    db.profile.save(user)
+    db.profile.insert_one(user)
     return Response(status=201)
 
 
