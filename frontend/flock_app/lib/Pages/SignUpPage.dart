@@ -9,6 +9,8 @@ import 'package:flutter_spinbox/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'LoginPage.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -58,6 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String password = "";
   String city = "";
   String country = "";
+  String bio = "";
   List<String> selectedInterests = <String>[];
   //String socialMediaLink = "";
   double age = 0;
@@ -107,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
             width: 200,
             child: TextField(
                 onChanged: (newText) {
-                  password = newText;
+                  username = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -210,7 +213,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 minLines: 1,
                 maxLines: 5,
                 onChanged: (newText) {
-                  //socialMediaLink = newText;
+                  bio = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -276,6 +279,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 //interests = selectedInterests.toString();
                 //print(interests);
                 createAlbum("newUser");
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LoginPage(loginError: false)));
               },
               child:
                   const Text('Create Account', style: TextStyle(fontSize: 22))),
@@ -299,7 +304,7 @@ class _SignUpPageState extends State<SignUpPage> {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, Object>{
-        'first_name': "hi",
+        'first_name': first_name,
         'city': city,
         'country': country,
         'email': email,
@@ -308,7 +313,7 @@ class _SignUpPageState extends State<SignUpPage> {
         'username': username,
         'age': age.toString(),
         'password': password,
-        'bio': "",
+        'bio': bio,
         'profile_pic_url': "",
       }),
     );
