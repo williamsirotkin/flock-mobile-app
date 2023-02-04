@@ -1,9 +1,4 @@
-from flask import Flask, Blueprint
 
-from db import db  
-
-profile = Blueprint("trips", __name__, url_prefix="/trips")
-
-profile.route("/")
-def home():
-    return "This is the trips routes"
+@trip.route("/")
+def trip_home():
+    return "This is the homepage for trips"

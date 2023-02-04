@@ -7,6 +7,6 @@ app = create_app()
 @app.route('/')
 def home():
     return "This is the homepage of our backend"
-    
+
 if __name__ == "__main__":
     app.run()
