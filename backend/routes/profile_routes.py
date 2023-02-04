@@ -21,7 +21,12 @@ def add_profile():
     user = {
         "first_name" : data['first_name'],
         "last_name" : data['last_name'],
-        "email" : data['email']
+        "email" : data['email'],
+        'password': data['password'],
+        'city': data['city'],
+        'country': data['country'],
+        'social': data['socialMediaLink'],
+        'age': data['age']
     }
     db.profile.insert_one(user)
     return Response(status=201)

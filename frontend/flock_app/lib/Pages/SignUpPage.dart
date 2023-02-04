@@ -10,6 +10,11 @@ class SignUpPage extends StatelessWidget {
   String firstName = "";
   String lastName = "";
   String email = "";
+  String password = "";
+  String city = "";
+  String country = "";
+  String socialMediaLink = "";
+  double age = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +66,7 @@ class SignUpPage extends StatelessWidget {
             width: 200,
             child: TextField(
                 onChanged: (newText) {
-                  lastName = newText;
+                  password = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -74,7 +79,7 @@ class SignUpPage extends StatelessWidget {
             width: 200,
             child: TextField(
                 onChanged: (newText) {
-                  email = newText;
+                  city = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -87,7 +92,7 @@ class SignUpPage extends StatelessWidget {
             width: 200,
             child: TextField(
                 onChanged: (newText) {
-                  email = newText;
+                  country = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -100,7 +105,7 @@ class SignUpPage extends StatelessWidget {
             width: 200,
             child: TextField(
                 onChanged: (newText) {
-                  email = newText;
+                  socialMediaLink = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -119,7 +124,7 @@ class SignUpPage extends StatelessWidget {
                   min: 1,
                   max: 100,
                   value: 50,
-                  onChanged: (value) => print(value),
+                  onChanged: (value) => age = value,
                 ),
               )
             ],
@@ -137,9 +142,6 @@ class SignUpPage extends StatelessWidget {
                       const TextStyle(fontSize: 14, color: Colors.white))),
               onPressed: () {
                 createAlbum("newUser");
-                print(firstName);
-                print(lastName);
-                print(email);
               },
               child:
                   const Text('Create Account', style: TextStyle(fontSize: 22))),
@@ -157,7 +159,12 @@ class SignUpPage extends StatelessWidget {
       body: jsonEncode(<String, String>{
         'first_name': firstName,
         'last_name': lastName,
-        'email': email
+        'email': email,
+        'password': password,
+        'city': city,
+        'country': country,
+        'social': socialMediaLink,
+        'age': age.toString()
       }),
     );
   }
