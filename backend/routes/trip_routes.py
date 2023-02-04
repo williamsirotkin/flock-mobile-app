@@ -43,23 +43,24 @@ def add_to_trip():
     except:
         return Response(status=403)
 
-@trip.route("/create")
+@trip.route("/create", methods=['POST'])
 def create_trip():
     data = request.json
 
     trip = {
         "name" : data['name'],
         "max_number" : data['max_number'],
-        "current_number" : data['current_number'],
-        "list_of_users" : data['list_of_users'],
-        "leader" : data['leader'],
+        "current_number" : 1,
+        "list_of_users" : [data['username']],
+        "leader" : data['username'],
         "destination" : data['destination'],
         "itinerary" : data['itinerary'],
-        "requirments" : data['requirements'],
+        "requirements" : data['requirements'],
         "description" : data['description'],
         "estimated_cost" : data['estimated_cost'],
         "start_date" : data['start_date'],
-        "end_data" : data['end_date']
+        "end_date" : data['end_date'],
+        "list_of_request" : []
     }
 
     try:
