@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import './SwipePage.dart';
+import '../Widgets/MenuProvider.dart';
+
 
 class LoginPage extends StatelessWidget {
   @override
@@ -56,7 +58,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         ),
                         ),
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => SwipePage()));},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage())));},
                 child: const Text('        Login       ')),
       ],
 
