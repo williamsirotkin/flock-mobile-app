@@ -14,3 +14,5 @@ def trip_home():
 def get_trip(state):
     data = db.trip.find_one({'state': state})
     return json.loads(json_util.dumps(data))
+
+@trip.route("/add/<string: id>", )
