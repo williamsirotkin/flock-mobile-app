@@ -6,8 +6,8 @@ import '../Pages/TripPage.dart';
 import './MenuProvider.dart';
 
 class MyTripWidget extends StatelessWidget {
-  var page, user;
-    MyTripWidget({this.page, this.user});
+  var page, user, image, location, dates;
+    MyTripWidget({this.page, this.user, this.image, this.location, this.dates});
     
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class MyTripWidget extends StatelessWidget {
         ClipRRect (
      borderRadius: BorderRadius.circular(30.0),
         child: Row(children: [
-        Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZteG1ce3_aHIp1-KASP59zOnKXT4DScQhikN4nxz9yPhl4ew02IIqXfwSexir1zMWr8Q&usqp=CAU",fit: BoxFit.cover, height: 125),
+        Image.network(image,fit: BoxFit.cover, height: 125),
           Column(children: [
             Text("  Paris, France", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             Text(" ", style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),

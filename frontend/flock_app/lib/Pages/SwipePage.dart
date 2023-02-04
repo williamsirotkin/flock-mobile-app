@@ -11,7 +11,39 @@ import '../Models/Usernames.dart';
 import '../Calls/FetchUsernameCall.dart';
 import '../Calls/LikeCall.dart';
 import '../Calls/HateCall.dart';
+enum UserFacing {
+  art,
+  drinking,
+  gym,
+  nightlife,
+  learning,
+  coffee,
+  outdoors,
+  gambling,
+  shopping,
+  hiking,
+  museums,
+  wildlife,
+  aviation,
+  biking
+}
 
+final entries = {
+  'art': 'art_gallery',
+  'drinking': 'bar',
+  'gym': 'gym',
+  'nightlife': 'night_club',
+  'learning': 'library',
+  'coffee': 'cafe',
+  'outdoors': 'campground',
+  'gambling': 'casino',
+  'shopping': 'shopping_mall',
+  'hiking': 'park',
+  'museums': 'museum',
+  'wildlife': 'zoo',
+  'aviation': 'airport',
+  'biking': 'bicycle_store',
+};
 class SwipePage extends StatelessWidget {
   var username, user;
   SwipePage({this.username, this.user});
@@ -40,7 +72,7 @@ class SwipePage extends StatelessWidget {
       shrinkWrap: true,
       children: [
         Swipe(child: 
-            Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 510),
+            Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 430),
         onSwipeLeft: () {
           print("Swiped Left");
           hate(Future.value(user), Future.value(username));
@@ -76,7 +108,7 @@ class SwipePage extends StatelessWidget {
                Row (
         children: [
           Text(" "),
-          Text(snapshot.data!.firstName + " " + snapshot.data!.lastName, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+          Text(snapshot.data!.firstName + " " + snapshot.data!.lastName, style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),),
           Text("  "),
           ElevatedButton(
                 style: ButtonStyle(
@@ -96,12 +128,50 @@ class SwipePage extends StatelessWidget {
                 child: const Text('Add Friend + ')),
         ]
       ),
-              Text("📍" + snapshot.data!.city + ", " + snapshot.data!.country, style: TextStyle(fontSize: 20)),
-              Text(snapshot.data!.bio, style: TextStyle(fontSize: 20)),
+              Row(children: [Text("📍" + snapshot.data!.city + ", " + snapshot.data!.country, style: TextStyle(fontSize: 20)), Text(" ")]),
+              Text(" "),
+              Row(children: [Text(" "), Text(snapshot.data!.bio, style: TextStyle(fontSize: 20))]),
+              Text(" "),
+              Row (children: [Text(" "), Image(image: AssetImage('assets/images/instagram.png'), height: 30), Text(" "), TextButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
+            ),
+            onPressed: () {print("See social media page");},
+            child: const Text('Instagram'),
+          ),Text("  "), Image(image: AssetImage('assets/images/facebook.png'), height: 30), TextButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
+            ),
+            onPressed: () {print("See social media page");},
+            child: const Text('Facebook'),
+          ),
+           ],
+           ),
+          Text(" "),
+          Row(children: [Text("  My Interests... "), Text(" ")]),
+          Wrap (
+            spacing: 5.0,
+            children: UserFacing.values.map((UserFacing interest) {
+                return FilterChip(
+                    label: Text(interest.name),
+                    backgroundColor: Colors.blue,
+                    onSelected: (bool value) {
+                    },
+                  );
+            }).toList(),
+          ),
               Row (children: [
-                Image(image: AssetImage('assets/images/jim-rating.png')),
-              ]
+                Text("        "),
+                Image(image: AssetImage('assets/images/jim-rating.png'),height: 130),
+                Text("      "),
+              ],
               ),
+              Row (children: [
+                Text("         "),
+                Image(image: AssetImage('assets/images/kramer-rating.png'),height: 135),
+                Text("      "),
+              ],
+              )
             ]
             );
           } else if (snapshot.hasError) {

@@ -16,14 +16,14 @@ class BackButtonWidget extends StatelessWidget {
           children: [
         Text(" "), 
         ClipRRect (
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(90),
         child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 179, 177, 177)),
                     padding:
                         MaterialStateProperty.all(const EdgeInsets.all(10)),
                     textStyle: MaterialStateProperty.all(
-                        const TextStyle(fontSize: 14, color: Colors.white))),
+                        const TextStyle(fontSize: 12, color: Colors.white))),
                 onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (page))));},
                 child: const Text('<- Go Back')),
         ),

@@ -22,7 +22,7 @@ class MyTripsPage extends StatelessWidget {
          Row (
             children: [
               Center(
-            child: Text("                     My Trips",
+            child: Text("                   My Trips",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
                 Text("      "),
         ElevatedButton(
