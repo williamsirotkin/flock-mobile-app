@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 import '../Widgets/BackButtonWidget.dart';
 import './FindTripsPage.dart';
+import '../Widgets/SuggestedPlaceWidget.dart';
 
 class TripDetailsPage extends StatelessWidget {
   @override

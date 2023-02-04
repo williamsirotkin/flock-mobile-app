@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import './MenuProvider.dart';
-
+import '../Pages/TripDetailsPage.dart';
 
 class FindTripWidget extends StatelessWidget {
   @override
@@ -25,7 +25,7 @@ class FindTripWidget extends StatelessWidget {
                         MaterialStateProperty.all(const EdgeInsets.all(20)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
-                onPressed: () {},
+                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: TripDetailsPage())));},
                 child: const Text('View Trip')),
           ])
         ])
