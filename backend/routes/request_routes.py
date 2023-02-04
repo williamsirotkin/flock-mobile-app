@@ -25,4 +25,6 @@ def request_to_join():
     except:
         return Response(status=403)
     
-@req.route
+@req.route("/accept")
+def accept():
+    pass

@@ -50,9 +50,9 @@ def create_trip():
     trip = {
         "name" : data['name'],
         "max_number" : data['max_number'],
-        "current_number" : data['current_number'],
-        "list_of_users" : data['list_of_users'],
-        "leader" : data['leader'],
+        "current_number" : 1,
+        "list_of_users" : [data['username']],
+        "leader" : data['username'],
         "destination" : data['destination'],
         "itinerary" : data['itinerary'],
         "requirements" : data['requirements'],
