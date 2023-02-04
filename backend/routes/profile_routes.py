@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, request, Response
+from flask import Flask, Blueprint, request, Response, jsonify
 import json
 from bson import json_util, ObjectId
 from db import db
@@ -122,6 +122,15 @@ def login():
         return Response(status=200)
     else:
         return Response(status=403)
+
+@profile.route("/social/<string:username>")
+def get_social(username):
+    
+    data = db.profile.find_one({"username" : username})
+
+    return jsonify(data['social_media'])
+
+
 
 
 
