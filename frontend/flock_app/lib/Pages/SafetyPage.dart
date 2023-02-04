@@ -6,6 +6,8 @@ import '../Widgets/MenuProvider.dart';
 
 
 class SafetyPage extends StatelessWidget {
+  var user;
+  SafetyPage({this.user});
   @override
   Widget build(BuildContext context) {
     return ListView(

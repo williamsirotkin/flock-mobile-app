@@ -41,11 +41,12 @@ class SwipePage extends StatelessWidget {
         Swipe(child: Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 440),
         onSwipeLeft: () {
           print("Swiped Left");
-          hate(Future.value("stephennemeth4"), Future.value(username));
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
+          hate(Future.value(user), Future.value(username));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername(), user: user), user: user)));
   },
   onSwipeRight: () async {
-    like(Future.value("stephenenmeth4"),Future.value(username));
+    print(user);
+    like(Future.value(user),Future.value(username));
   
     /*
     FutureBuilder<Usernames>(
@@ -62,7 +63,7 @@ class SwipePage extends StatelessWidget {
         },
     );
     */
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername(), user: user), user: user)));
   },
   ),
       FutureBuilder<Person>(

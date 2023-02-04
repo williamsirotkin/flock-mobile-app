@@ -6,9 +6,11 @@ import '../Pages/TripPage.dart';
 import './MenuProvider.dart';
 
 class MyTripWidget extends StatelessWidget {
+  var page, user;
+    MyTripWidget({this.page, this.user});
+    
   @override
   Widget build(BuildContext context) {
-   // var appState = context.watch<MyAppState>();
 
     return Container(
     color: Color.fromARGB(255, 190, 189, 189),

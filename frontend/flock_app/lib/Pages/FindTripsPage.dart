@@ -7,6 +7,8 @@ import '../Widgets/FindTripWidget.dart';
 import './TripDetailsPage.dart';
 
 class FindTripsPage extends StatelessWidget {
+  var user;
+  FindTripsPage({this.user});
   @override
   Widget build(BuildContext context) {
 

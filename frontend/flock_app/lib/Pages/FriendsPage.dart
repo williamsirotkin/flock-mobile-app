@@ -6,6 +6,8 @@ import '../Widgets/MenuProvider.dart';
 import '../Widgets/FriendWidget.dart';
 
 class FriendsPage extends StatelessWidget {
+  var page, user;
+    FriendsPage({this.page, this.user});
   @override
   Widget build(BuildContext context) {
     return ListView(

@@ -7,6 +7,8 @@ import '../Widgets/BackButtonWidget.dart';
 import '../Widgets/ChatMemberWidget.dart';
 
 class ChatSettingsPage extends StatelessWidget {
+  var user;
+    ChatSettingsPage({this.user});
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();
