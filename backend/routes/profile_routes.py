@@ -41,19 +41,19 @@ def get_profile_query(age_min, age_max):
 def add_profile():
     data = request.json
     user = {
-        'first_name' : request['first_name'],
-        'city' : request['city'],
-        'country' : request['country'],
-        'email' : request['email'],
-        'interests' : request['interests'],
-        'last_name' : request['last_name'],
-        'social_media' : request['social_media'],
-        'username' : request['username'],
-        'age' : request['age'],
-        'bio' : request['bio'],
-        'profile_pic_url' : request['profile_pic_url'],
+        'first_name' : data['first_name'],
+        'city' : data['city'],
+        'country' : data['country'],
+        'email' : data['email'],
+        'interests' : data['interests'],
+        'last_name' : data['last_name'],
+        'social_media' : data['social_media'],
+        'username' : data['username'],
+        'age' : data['age'],
+        'bio' : data['bio'],
+        'profile_pic_url' : data['profile_pic_url'],
         'liker' : [],
-        'password' : request['password']
+        'password' : data['password']
     }
 
     db.profile.insert_one(user)
