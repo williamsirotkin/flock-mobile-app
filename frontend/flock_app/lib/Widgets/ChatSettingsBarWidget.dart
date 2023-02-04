@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 import 'MenuProvider.dart';
 import '../Pages/ItineraryPage.dart';
+import '../Pages/RequestPage.dart';
+import '../Pages/ChatSettingsPage.dart';
 
 class ChatSettingsBarWidget extends StatelessWidget {
   @override
@@ -15,7 +17,7 @@ class ChatSettingsBarWidget extends StatelessWidget {
             style: TextButton.styleFrom(
               textStyle: const TextStyle(fontSize: 20),
             ),
-            onPressed: () {},
+            onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: RequestsPage())));},
             child: const Text('Requests'),
           ),
       Text("     "),
@@ -31,7 +33,7 @@ class ChatSettingsBarWidget extends StatelessWidget {
             style: TextButton.styleFrom(
               textStyle: const TextStyle(fontSize: 20),
             ),
-            onPressed: () {},
+            onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: ChatSettingsPage())));},
             child: const Text('Chat Settings'),
           ),
     ],);
