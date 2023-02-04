@@ -23,8 +23,8 @@ def get_random_username():
     return json.loads(json_util.dumps(random.choice(list(data))))
 
 @profile.route("getProfiles", methods = ['GET'])
-def get_profiles(username):
-    data = db.profile.find({'username' : username}, 
+def get_profiles():
+    data = db.profile.find( 
                            {'username' : {'$nin': ["likee"]}}
                            , {'username' : {'$nin': ["hatee"]}})
 
