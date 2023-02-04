@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import '../Widgets/BackButtonWidget.dart';
-import './MyTripsPage.dart';
-import '../Widgets/MenuProvider.dart';
-import './TripDetailsPage.dart';
-import '../Widgets/ChatSettingsBarWidget.dart';
+import './FindTripsPage.dart';
 
-class TripPage extends StatelessWidget {
+class TripDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    // var appState = context.watch<MyAppState>();
@@ -16,8 +13,8 @@ class TripPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        BackButtonWidget(page: MyTripsPage()),
-        ChatSettingsBarWidget(),
+        BackButtonWidget(page: FindTripsPage()),
+        Text("Trip Details Page"),
       ],
     );
   }
