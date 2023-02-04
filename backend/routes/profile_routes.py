@@ -75,7 +75,7 @@ def like():
     except:
         return Response(status=403)
 
-@profile.route("/hate", methods=['POST'])    
+@profile.route("/hate", methods=['PUT'])    
 def hate():
     data = request.json
 
