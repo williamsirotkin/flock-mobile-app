@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, request
+from flask import Flask, Blueprint, request, Response
 import json
 from bson import json_util, ObjectId
 from db import db  
@@ -17,8 +17,16 @@ def get_profile(username):
 
 @profile.route("/add", methods=['POST'])
 def add_profile():
-    username = request
-    
-    
+    data = request.json
+    user = {
+        "first_name" : data['first_name'],
+        "last_name" : data['last_name'],
+        "email" : data['email']
+    }
+    db.profile.save(user)
+    return Response(status=201)
+
+
+
 
 
