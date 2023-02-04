@@ -3,7 +3,7 @@ import json
 from bson import json_util, ObjectId
 from db import db  
 import random
-import argon2
+#import argon2
 
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
@@ -33,6 +33,7 @@ def add_profile():
     db.profile.insert_one(user)
     return Response(status=201)
 
+'''
 @profile.route("/login")
 def login():
     data = request.json
@@ -44,6 +45,7 @@ def login():
         return Response(status=200)
     else:
         return Response(status=403)
+'''
 
 
 
