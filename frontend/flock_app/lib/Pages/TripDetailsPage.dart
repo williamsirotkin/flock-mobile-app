@@ -46,45 +46,16 @@ class TripDetailsPage extends StatelessWidget {
                 height: 50,
                 color: Colors.blue[200],
                 child: Center(
-                    child: Text("Destination: " + snapshot.data!.destination)),
+                    child: Text("Destination: " + snapshot.data!.destination,
+                        style: TextStyle(fontSize: 20))),
               ),
               Text(" "),
               Container(
                 height: 50,
                 color: Colors.blue[200],
                 child: Center(
-                    child: Text("Description: " + snapshot.data!.description)),
-              ),
-              Text(" "),
-              Container(
-                height: 50,
-                color: Colors.blue[200],
-                child: Center(
-                    child: Text(
-                        "Max Number of People: " + snapshot.data!.max_number)),
-              ),
-              Text(" "),
-              Container(
-                height: 50,
-                color: Colors.blue[200],
-                child: Center(
-                    child: Text("Current Number of People: " +
-                        snapshot.data!.current_number)),
-              ),
-              Text(" "),
-              Container(
-                height: 50,
-                color: Colors.blue[200],
-                child: Center(
-                    child: Text("Group Leader: " + snapshot.data!.leader)),
-              ),
-              Text(" "),
-              Container(
-                height: 50,
-                color: Colors.blue[200],
-                child: Center(
-                    child:
-                        Text("Requirements: " + snapshot.data!.requirements)),
+                    child: Text("Description: " + snapshot.data!.description,
+                        style: TextStyle(fontSize: 20))),
               ),
               Text(" "),
               Container(
@@ -92,22 +63,76 @@ class TripDetailsPage extends StatelessWidget {
                 color: Colors.blue[200],
                 child: Center(
                     child: Text(
-                        "Estimated Cost: " + snapshot.data!.estimated_cost)),
+                        "Max Number of People: " + snapshot.data!.max_number,
+                        style: TextStyle(fontSize: 20))),
               ),
               Text(" "),
               Container(
                 height: 50,
                 color: Colors.blue[200],
                 child: Center(
-                    child: Text("Start Date: " + snapshot.data!.start_date)),
+                    child: Text(
+                        "Current Number of People: " +
+                            snapshot.data!.current_number,
+                        style: TextStyle(fontSize: 20))),
               ),
               Text(" "),
               Container(
                 height: 50,
                 color: Colors.blue[200],
-                child:
-                    Center(child: Text("End Date: " + snapshot.data!.end_date)),
+                child: Center(
+                    child: Text("Group Leader: " + snapshot.data!.leader,
+                        style: TextStyle(fontSize: 20))),
               ),
+              Text(" "),
+              Container(
+                height: 50,
+                color: Colors.blue[200],
+                child: Center(
+                    child: Text("Requirements: " + snapshot.data!.requirements,
+                        style: TextStyle(fontSize: 20))),
+              ),
+              Text(" "),
+              Container(
+                height: 50,
+                color: Colors.blue[200],
+                child: Center(
+                    child: Text(
+                        "Estimated Cost: " + snapshot.data!.estimated_cost,
+                        style: TextStyle(fontSize: 20))),
+              ),
+              Text(" "),
+              Container(
+                height: 50,
+                color: Colors.blue[200],
+                child: Center(
+                    child: Text("Start Date: " + snapshot.data!.start_date,
+                        style: TextStyle(fontSize: 20))),
+              ),
+              Text(" "),
+              Container(
+                height: 50,
+                color: Colors.blue[200],
+                child: Center(
+                    child: Text("End Date: " + snapshot.data!.end_date,
+                        style: TextStyle(fontSize: 20))),
+              ),
+              Text(""),
+              ElevatedButton(
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      )),
+                      backgroundColor: MaterialStateProperty.all(
+                          Color.fromARGB(255, 17, 219, 51)),
+                      padding:
+                          MaterialStateProperty.all(const EdgeInsets.all(10)),
+                      textStyle: MaterialStateProperty.all(
+                          const TextStyle(fontSize: 14, color: Colors.white))),
+                  onPressed: () {},
+                  child: const Text('Ask to Join',
+                      style: TextStyle(fontSize: 22))),
             ],
           ));
         } else {
