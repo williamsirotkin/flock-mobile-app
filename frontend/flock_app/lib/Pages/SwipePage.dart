@@ -8,6 +8,8 @@ import 'dart:convert';
 import '../Models/Person.dart';
 
 class SwipePage extends StatelessWidget {
+  var username;
+    SwipePage({this.username});
   late Future<Person> futurePerson;
 
    @override
@@ -15,7 +17,7 @@ class SwipePage extends StatelessWidget {
    // var appState = context.watch<MyAppState>();
     Future<Person> fetchPerson() async {
   final response = await http
-      .get(Uri.parse('http://127.0.0.1:5000/profile/get/stephennemeth4'));
+      .get(Uri.parse('http://127.0.0.1:5000/profile/get/' + username));
         if (response.statusCode == 200) {
           // If the server did return a 200 OK response,
           // then parse the JSON.
@@ -67,8 +69,7 @@ class SwipePage extends StatelessWidget {
                 child: const Text('Add Friend + ')),
         ]
       ),
-              Text(snapshot.data!.city, style: TextStyle(fontSize: 20)),
-              Text(snapshot.data!.country, style: TextStyle(fontSize: 20)),
+              Text("📍" + snapshot.data!.city + ", " + snapshot.data!.country, style: TextStyle(fontSize: 20)),
               Text(snapshot.data!.bio, style: TextStyle(fontSize: 20)),
             ]
             );
