@@ -1,6 +1,6 @@
-from pymongo import MongoClient
 import certifi
-
-client = MongoClient("mongodb+srv://marc_silverman:Flockapp69@cluster0.i8g2tz1.mongodb.net/?retryWrites=true&w=majority",  tlsCAFile=certifi.where())
-
-db = client.flock
+import os
+from flask_pymongo import PyMongo
+MONGO_URI = os.environ['MONGO_URI']
+mongo = PyMongo(MONGO_URI)
+db = mongo.db
