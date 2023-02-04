@@ -15,27 +15,10 @@ class SignUpPage extends StatefulWidget {
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
-enum APIValues {
-  art_gallery,
-  bar,
-  /*gym,
-  night_club,
-  library,
-  cafe,
-  campground,
-  casino,
-  shopping_mall,
-  park,
-  museum,
-  zoo,
-  airport,
-  bicycle_store*/
-}
-
 enum UserFacing {
   art,
   drinking,
-  /*gym,
+  gym,
   nightlife,
   learning,
   coffee,
@@ -43,14 +26,28 @@ enum UserFacing {
   gambling,
   shopping,
   hiking,
-  museums,
+  /*museums,
   wildlife,
   aviation,
   biking*/
 }
 
-final Map<String, String> apiLookup = HashMap();
-final entries = {'art': 'art_gallery', 'drinking': 'bar'};
+final entries = {
+  'art': 'art_gallery',
+  'drinking': 'bar',
+  'gym': 'gym',
+  'nightlife': 'night_club',
+  'learning': 'library',
+  'coffee': 'cafe',
+  'outdoors': 'campground',
+  'gambling': 'casino',
+  'shopping': 'shopping_mall',
+  'hiking': 'park',
+  'museums': 'museum',
+  'wildlife': 'zoo',
+  'aviation': 'airport',
+  'biking': 'bicycle_store',
+};
 
 class _SignUpPageState extends State<SignUpPage> {
   String first_name = "";
@@ -60,6 +57,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String password = "";
   String city = "";
   String country = "";
+  List<String> selectedInterests = <String>[];
   //String socialMediaLink = "";
   double age = 0;
   //String interests = [];
@@ -235,12 +233,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   textStyle: MaterialStateProperty.all(
                       const TextStyle(fontSize: 14, color: Colors.white))),
               onPressed: () {
-                List<String> selectedInterests = <String>[];
                 for (var i = 0; i < _filters.length; i++) {
                   var currentElement = _filters[i];
-                  print(currentElement);
-                  var apiVal = apiLookup[currentElement];
-                  //print(apiVal);
+                  var apiVal = entries[currentElement];
+                  selectedInterests.add(apiVal!);
                 }
                 //interests = selectedInterests.toString();
                 //print(interests);
@@ -254,6 +250,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<http.Response> createAlbum(String title) {
+    print(selectedInterests);
     return http.post(
       Uri.parse('http://127.0.0.1:5000/profile/add'),
       headers: <String, String>{
