@@ -109,6 +109,32 @@ class CreateTripPage extends StatelessWidget {
                   labelText: 'Estimated Cost',
                 )),
           ),
+          SizedBox(
+            height: 50,
+            width: 200,
+            child: TextField(
+                onChanged: (newText) {
+                  start_date = newText;
+                },
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Start Date',
+                )),
+          ),
+          SizedBox(
+            height: 50,
+            width: 200,
+            child: TextField(
+                onChanged: (newText) {
+                  end_date = newText;
+                },
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'End Date',
+                )),
+          ),
           /*SizedBox(
             height: 50,
             width: 200,
@@ -121,7 +147,7 @@ class CreateTripPage extends StatelessWidget {
                   border: OutlineInputBorder(),
                   labelText: 'Start Date',
                 )),
-          ),*/
+          ),
           SizedBox(
               height: 50,
               width: 200,
@@ -143,7 +169,7 @@ class CreateTripPage extends StatelessWidget {
                 firstDate: DateTime.now(),
                 lastDate: DateTime.parse('2025-07-20 20:18:04Z'),
                 fieldLabelText: 'End Date',
-              )),
+              )),*/
           Text(' '),
           ElevatedButton(
               style: ButtonStyle(
@@ -166,21 +192,24 @@ class CreateTripPage extends StatelessWidget {
   }
 
   Future<http.Response> createAlbum(String title) {
+    print(name);
+    print(description);
+    print(requirements);
     return http.post(
       Uri.parse('http://127.0.0.1:5000/trip/create'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, Object>{
+      body: jsonEncode(<String, String>{
         'name': name,
         'max_number': max_number,
+        'username': user,
         'destination': destination,
         'requirements': requirements,
         'description': description,
         'estimated_cost': estimated_cost,
         'start_date': start_date,
-        'end_date': end_date,
-        'username': user
+        'end_date': end_date
       }),
     );
   }
