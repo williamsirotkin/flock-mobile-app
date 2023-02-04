@@ -12,9 +12,13 @@ def trip_home():
 
 @trip.route("/get/<string:name>", methods=['GET'])
 def get_trip(name):
-    data = db.trip.find_one({'name': name})
-    return json.loads(json_util.dumps(data))
-
+    try:
+        data = db.trips.find_one({'name': name})
+        return json.loads(json_util.dumps(data))
+        return Respone(status=200)
+    except:
+        return Response(status=403)
+    
 @trip.route('/update_itinerary')
 def update_itinerary():
     data = request.json
@@ -64,6 +68,7 @@ def create_trip():
 
     try:
         db.trips.insert_one(trip)
+        db.profile.update_one({'username' : data['usernam']}, {'$push'})
         return Response(status=201)
     except:
         return Response(status=403)
