@@ -4,9 +4,18 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 import './SwipePage.dart';
 import '../Widgets/MenuProvider.dart';
+import '../Calls/LoginCall.dart';
 
+String helper(bool error) {
+  if (error) {
+    return "There was an error logging you in";
+  }
+  return "";
+}
 
 class LoginPage extends StatelessWidget {
+  var loginError;
+  LoginPage({this.loginError});
   var username = "";
   var password = "";
   @override
@@ -20,6 +29,7 @@ class LoginPage extends StatelessWidget {
         Text(" "), 
         Text(" "),
         Text(" "),
+        Text(helper(loginError), style: TextStyle(fontSize: 20, color: Colors.red)),
         Row (
           children: [
             Text("                     "),
@@ -64,17 +74,22 @@ class LoginPage extends StatelessWidget {
                         ),
                         ),
                         ),
-                onPressed: () {print("Hello world"); Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4"))));},
+                onPressed: () async {
+                  var response = await login(username, password);
+                  if (response.statusCode == 200) {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4", user: username))));
+                  } else {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: LoginPage(loginError: true))));
+                  }
+                },
                 child: const Text('        Login       ')),
+              ],
+               ),
+                           Text(" "),
       ],
-
-    ),
-    Text(" "),
-          ]
         )
       ]
     )
     );
-
   }
 }

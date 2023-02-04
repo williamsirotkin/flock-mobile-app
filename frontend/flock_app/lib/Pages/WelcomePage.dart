@@ -62,7 +62,7 @@ class WelcomePage extends StatelessWidget {
                       const TextStyle(fontSize: 14, color: Colors.white))),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginPage()));
+                    .push(MaterialPageRoute(builder: (context) => LoginPage(loginError: false)));
               },
               child: const Text('Login', style: TextStyle(fontSize: 22))),
         ),
