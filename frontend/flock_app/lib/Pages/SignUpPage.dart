@@ -1,5 +1,4 @@
 import 'dart:collection';
-
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,11 +7,10 @@ import '../main.dart';
 import 'package:flutter_spinbox/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'LoginPage.dart';
+import './LoginPage.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -53,6 +51,7 @@ final entries = {
 };
 
 class _SignUpPageState extends State<SignUpPage> {
+  var image;
   String first_name = "";
   String last_name = "";
   String username = "";
@@ -174,7 +173,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Country',
                 )),
           ),
-          Text(" "),
+
           SizedBox(
             height: 50,
             width: 200,
@@ -282,6 +281,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => LoginPage(loginError: false)));
               },
+              
               child:
                   const Text('Create Account', style: TextStyle(fontSize: 22))),
           Text(' '),
@@ -319,3 +319,4 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
