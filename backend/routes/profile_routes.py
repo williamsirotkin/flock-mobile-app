@@ -21,13 +21,19 @@ def get_random_username():
     data = db.profile.find({}, {"username" : True})
     return json.loads(json_util.dumps(random.choice(list(data))))
 
-@profile.route("getProfiles", methods = ['GET'])
-def get_profiles():
-    data = db.profile.find( 
-                           {'username' : {'$nin': ["likee"]}}
-                           , {'username' : {'$nin': ["hatee"]}})
+@profile.route("getProfiles/<string:username>", methods = ['GET'])
+def get_profiles(username):
+    data = db.profile.find_one({'username': username})
+    data2 = list(data['liker']) + list(data['hater'])
+    #print(data2)
+    data4 = list()
 
-    return json.loads(json_util.dumps(random.choice(list(data))))
+    data3 = db.profile.find({'username': {'$nin': data2}})
+    for d in data3:
+        data4.append(d["username"])
+    
+    #print(data4)
+    return data4
 
 #queries users based on certain input conditions
 @profile.route("/getProfileQuery", methods = ['GET'])
@@ -53,6 +59,9 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
+        'likee' : [],
+        'hater' : [],
+        'hatee' : [], 
         'password' : ph.hash(request['password'])
     }
 
