@@ -2,6 +2,6 @@ import certifi
 import os
 from pymongo import MongoClient
 
-MONGO_URI = os.environ['MONGO_URI']
-client = MongoClient(MONGO_URI, tlsCAFile=certifi.where()))
-db = client.db
+client = MongoClient("mongodb+srv://marc_silverman:Flockapp69@cluster0.i8g2tz1.mongodb.net/?retryWrites=true&w=majority", tlsCAFile=certifi.where())
+db = client.flock
+print(db.collection_names())
