@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 import '../Pages/SwipePage.dart';
 import '../Pages/ProfilePage.dart';
+import '../Pages/MyTripsPage.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -20,7 +21,7 @@ class MenuProvider extends StatelessWidget {
         case 1:
           return SwipePage();
         case 2:
-          return SwipePage();
+          return MyTripsPage();
         case 3:
           return SwipePage();
         case 4:
