@@ -24,6 +24,14 @@ def get_random_username():
     data = db.profile.find({}, {"username" : True})
     return json.loads(json_util.dumps(random.choice(list(data))))
 
+@profile.route("getProfiles", methods = ['GET'])
+def get_profiles(username):
+    data = db.profile.find({'username' : username}, 
+                           {'username' : {'$nin': ["likee"]}}
+                           , {'username' : {'$nin': ["hatee"]}})
+
+    db.profile.find
+
 #queries users based on certain input conditions
 @profile.route("/getProfileQuery", methods = ['GET'])
 def get_profile_query(age_min, age_max):
@@ -48,7 +56,6 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
-        'password': argon2.hash_password(request['password']),
     }
 
     db.profile.insert_one(user)
@@ -67,6 +74,18 @@ def like():
     except:
         return Response(status=403)
 
+@profile.route("/hate", methods=['POST'])    
+def hate():
+    data = request.json
+
+    hater = request['hater']
+    hatee = request['hatee']
+
+    try:
+        db.profile.update_one({'username' : hater}, {'$push' : {'hater' : hatee}})
+        return Response(status=200)
+    except:
+        return Response(status=403)
 
 
 @profile.route("/login")

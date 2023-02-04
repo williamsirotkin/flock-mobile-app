@@ -10,9 +10,9 @@ trips = db.trip
 def trip_home():
     return "This is the profile routes"
 
-@trip.route("/get/<string:state>", methods=['GET'])
-def get_trip(state):
-    data = db.trip.find_one({'state': state})
+@trip.route("/get/<string:name>", methods=['GET'])
+def get_trip(name):
+    data = db.trip.find_one({'name': name})
     return json.loads(json_util.dumps(data))
 
 @trip.route('/update_itinerary')
