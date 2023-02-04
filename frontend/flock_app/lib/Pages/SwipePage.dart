@@ -43,7 +43,19 @@ class SwipePage extends StatelessWidget {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
   },
   onSwipeRight: () {
-    print("HI");
+    Future<http.Response> like() async {
+    return http.put(
+      Uri.parse('http://127.0.0.1:5000/profile/like'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'liker': "stephennemeth4",
+        'likee': await username,
+      }),
+    );
+  }
+  like();
     /*
     FutureBuilder<Usernames>(
         future: fetchUsername(),
