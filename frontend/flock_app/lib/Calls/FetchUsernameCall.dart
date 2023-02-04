@@ -7,9 +7,7 @@ Future<String> fetchUsername() async {
         if (response.statusCode == 200) {
           // If the server did return a 200 OK response,
           // then parse the JSON.
-          print("Okay");
           print(jsonDecode(response.body));
-          print("Okay");
           Map<String, dynamic> jsonStuff = jsonDecode(response.body);
           return jsonStuff['username'];
         } else {

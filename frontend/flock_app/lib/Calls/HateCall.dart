@@ -8,8 +8,8 @@ Future<http.Response> hate(Future<String> hater, Future<String> hatee) async {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'liker': await hater,
-        'likee': await hatee,
+        'hater': await hater,
+        'hatee': await hatee,
       }),
     );
 }
