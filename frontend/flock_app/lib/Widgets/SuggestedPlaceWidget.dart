@@ -14,13 +14,11 @@ class SuggestedPlaceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // var appState = context.watch<MyAppState>();
-
     List<Widget> photoList = [];
     List<Widget> suggestedPlaceList = [];
     for (int i = 0; i < photos.length; i++) {
       print(photos[i].toString());
-          photoList.add(Image.network('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=' + photos[i]['photo_reference'] + '&key=' + String.fromEnvironment('places_key'), height: 90, width: 130));
+          photoList.add(Image.network('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=' + photos[i]['photo_reference'] + '&key=' + dotenv.env['places_key']!, height: 90, width: 130));
       }
     for (int i = 0; i < photos.length; i++) {
         suggestedPlaceList.add(

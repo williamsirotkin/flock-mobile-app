@@ -9,8 +9,6 @@ import '../Widgets/SuggestedPlaceWidget.dart';
 class TripDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   // var appState = context.watch<MyAppState>();
-
     return ListView(
       shrinkWrap: true,
       children: [
