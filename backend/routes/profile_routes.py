@@ -34,13 +34,11 @@ def login():
     username = data['username']
     password = data['password']
     user = db.profile.find_one({'username' : username})
-    
+
     if password == argon2.hash_password(password):
         return Response(status=200)
     else:
         return Response(status=403)
-
-def generate_password
 
 
 
