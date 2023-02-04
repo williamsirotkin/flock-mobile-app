@@ -3,7 +3,7 @@ import 'dart:convert';
 
 Future<http.Response> hate(Future<String> hater, Future<String> hatee) async {
     return http.put(
-      Uri.parse('http://127.0.0.1:5000/profile/hate'),
+      Uri.parse('https://flock.dynv6.net/profile/hate'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

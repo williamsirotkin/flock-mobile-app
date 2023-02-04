@@ -5,7 +5,7 @@ import 'dart:convert';
 Future<http.Response> login(String username, String password) async {
     final http.Client client;
     final response = await http.put(
-      Uri.parse('http://127.0.0.1:5000/profile/login'),
+      Uri.parse('https://flock.dynv6.net/profile/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

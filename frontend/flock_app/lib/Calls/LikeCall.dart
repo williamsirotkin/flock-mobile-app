@@ -4,7 +4,7 @@ import 'dart:convert';
 
 Future<http.Response> like(Future<String> liker, Future<String> likee) async {
     return http.put(
-      Uri.parse('http://127.0.0.1:5000/profile/like'),
+      Uri.parse('https://flock.dynv6.net/profile/like'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -1,9 +1,13 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<String> fetchUsername() async {
+Future<String> recommendCall(String username1, String username2) async {
         final response = await http
-      .get(Uri.parse('https://flock.dynv6.net/profile/getRandomUsername'));
+      .get(Uri.parse('https://flock.dynv6.net/profile/recommend')),
+      body: jsonEncode(<String, String>{
+        'username1': username1,
+        'username2': username2,
+      }),
         if (response.statusCode == 200) {
           // If the server did return a 200 OK response,
           // then parse the JSON.

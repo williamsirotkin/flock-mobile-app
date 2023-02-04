@@ -3,7 +3,7 @@ import 'dart:convert';
 
 Future<String> getInboxRequests() async {
         final response = await http
-      .get(Uri.parse('http://127.0.0.1:5000/profile/getRandomUsername'));
+      .get(Uri.parse('https://flock.dynv6.net/profile/getRandomUsername'));
         if (response.statusCode == 200) {
           // If the server did return a 200 OK response,
           // then parse the JSON.

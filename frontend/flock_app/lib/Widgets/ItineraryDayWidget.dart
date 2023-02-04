@@ -19,7 +19,7 @@ class ItineraryDayWidget extends StatelessWidget {
       children: [
         ClipRRect (
           borderRadius: BorderRadius.circular(25),
-        child: Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5FeO6J6NEl9Ek-eMuFWwsfMgTadTqliscOw&usqp=CAU", fit: BoxFit.cover, height: 325)),
+        child: Image.network(getImageURL((dayAndNight)), fit: BoxFit.cover, height: 325)),
           Row (
           children: [
             Text("              "),
@@ -46,7 +46,7 @@ class ItineraryDayWidget extends StatelessWidget {
                 child: const Text('    Next ->    ')),
           ]
         ),
-        Text("Home to the world’s most active volcanoes, the only royal palace in the U.S. and the welcoming aloha spirit—Hawaiʻi is like no place on earth. Discover the glimmering ocean, emerald valleys and golden sands; get lost in the spiritual beauty of the hula and find out how the warmth of Hawaiʻi’s people wonderfully complement the islands’ perfect temperatures. We invite you to explore the Islands of Aloha to find your own heavenly Hawaiʻi experiences. Aloha. ")
+        getPlan(numberDay * 2 - 2),
       ],
     );
   }
@@ -72,4 +72,30 @@ int funcNum(nextOrPrev, dayOrNight, numDay) {
   }
 
   return numDay;
+}
+
+
+
+Widget getPlan(day) {
+  switch(day) {
+        case 0:
+          return Text("Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands.[13] With an area of 7,617,930 square kilometres (2,941,300 sq mi),[14] Australia is the largest country by area in Oceania and the world's sixth-largest country.");
+        case 1:
+          return Text("Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands.[13] With an area of 7,617,930 square kilometres (2,941,300 sq mi),[14] Australia is the largest country by area in Oceania and the world's sixth-largest country.");
+        case 2:
+          return Text("Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands.[13] With an area of 7,617,930 square kilometres (2,941,300 sq mi),[14] Australia is the largest country by area in Oceania and the world's sixth-largest country.");
+        case 3:
+          return Text("Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands.[13] With an area of 7,617,930 square kilometres (2,941,300 sq mi),[14] Australia is the largest country by area in Oceania and the world's sixth-largest country.");
+        case 4:
+          return Text("Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands.[13] With an area of 7,617,930 square kilometres (2,941,300 sq mi),[14] Australia is the largest country by area in Oceania and the world's sixth-largest country.");
+        case 5:
+          return Text("Australia, officially the Commonwealth of Australia, is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands.[13] With an area of 7,617,930 square kilometres (2,941,300 sq mi),[14] Australia is the largest country by area in Oceania and the world's sixth-largest country.");
+       }
+      return Text("Australia");
+}
+
+String getImageURL(day) {
+      if (day == "Day") {
+            return "https://upload.wikimedia.org/wikipedia/commons/a/a0/Sydney_Australia._%2821339175489%29.jpg";
+      } return "https://www.kkday.com/en/blog/wp-content/uploads/Australia_Sydney_AFotolia_155673241.jpg";
 }

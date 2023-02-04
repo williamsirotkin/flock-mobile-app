@@ -13,7 +13,6 @@ class MyTripsPage extends StatelessWidget {
   MyTripsPage({this.user});
   @override
   Widget build(BuildContext context) {
-    // var appState = context.watch<MyAppState>();
 
     return ListView(
       shrinkWrap: true,
@@ -46,15 +45,16 @@ class MyTripsPage extends StatelessWidget {
                 ]
           ),
         Text(' '),
-        MyTripWidget(),
+        MyTripWidget(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP4K7oxBSywtLjDCdi5tLH9dXBeXSKgbqOp1PJyDw1xbj1oTRDUIJYPbmaAhsPQ8nUIrI&usqp=CAU", location: "London, England", dates: "May 8th - May 22nd"),
         Text(" "),
-        MyTripWidget(),
+        MyTripWidget(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHd3VKXUrcYDiUoPya_sVrCIQ13NjrPW2Ow&usqp=CAU", location: "Sydney, Australia", dates: "Dec 1st - Dec 16th"),
         Text(" "),
-        MyTripWidget(),
         Text(" "),
-        MyTripWidget(),
-         Text(" "),
-        MyTripWidget(),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
       ],
     );
   }

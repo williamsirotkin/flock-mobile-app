@@ -6,6 +6,7 @@ class Person {
   final String email;
   final String bio;
   final List<String> interests;
+  final String pic_url;
 
   const Person({
     required this.firstName,
@@ -15,6 +16,7 @@ class Person {
     required this.country,
     required this.bio,
     required this.interests,
+    required this.pic_url,
   });
 
   factory Person.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ class Person {
       email: json['email'],
       bio: json['bio'],
       interests: json['interests'].cast<String>(),
+      pic_url: json['profile_pic_url'],
     );
   }
 }

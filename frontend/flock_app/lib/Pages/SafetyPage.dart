@@ -13,7 +13,7 @@ class SafetyPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Center(child: Text("Our Pledge To Your Safety", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+        Center(child: Text("Our Pledge To Safety", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
         Text(" "),
         Text(" "),
         Center(child: Text(" Your safety when travelling using our application is our top priority. We have multiple built in safety features as well as safety recommendations to keep you safe.")),

@@ -27,11 +27,11 @@ class MyTripWidget extends StatelessWidget {
         ClipRRect (
      borderRadius: BorderRadius.circular(30.0),
         child: Row(children: [
-        Image.network(image,fit: BoxFit.cover, height: 125),
+        Image.network(image,fit: BoxFit.cover, height: 125, width: 180),
           Column(children: [
-            Text("  Paris, France", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Center(child: Text("      " + location, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
             Text(" ", style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),
-            Text("   May 12th - May 21st"),
+            Text(dates),
             Text(" ", style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),
             ElevatedButton(
                 style: ButtonStyle(
