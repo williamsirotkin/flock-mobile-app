@@ -1,3 +1,10 @@
+from flask import Flask, Blueprint, request
+import json
+from bson import json_util
+from db import db 
+
+trip = Blueprint("trip", __name__, url_prefix="/trip")
+trips = db.trip
 
 from flask import Flask, Blueprint, request
 import json
