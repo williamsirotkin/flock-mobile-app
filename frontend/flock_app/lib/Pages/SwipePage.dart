@@ -44,6 +44,7 @@ final entries = {
   'aviation': 'airport',
   'biking': 'bicycle_store',
 };
+
 class SwipePage extends StatelessWidget {
   var username, user;
   SwipePage({this.username, this.user});
@@ -152,12 +153,14 @@ class SwipePage extends StatelessWidget {
           Wrap (
             spacing: 5.0,
             children: UserFacing.values.map((UserFacing interest) {
-                return FilterChip(
+                    return getValue(FilterChip(
                     label: Text(interest.name),
                     backgroundColor: Colors.blue,
                     onSelected: (bool value) {
                     },
-                  );
+                  ), snapshot.data!, interest);
+              //  } 
+              //  }
             }).toList(),
           ),
               Row (children: [
@@ -185,4 +188,14 @@ class SwipePage extends StatelessWidget {
       ]
     );
   }
+  }
+
+  Widget getValue(chip, data, interest) {
+    for (int i = 0; i < data.interests.length; i++) {
+      print(data.interests[i].toLowerCase());
+        if (entries[interest.toString().substring(11)].toString().toLowerCase() == data.interests[i].toLowerCase()) {
+          return chip;
+        }
+            }
+            return Text("");
   }

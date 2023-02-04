@@ -139,7 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 onChanged: (newText) {
                   password = newText;
                 },
-                obscureText: false,
+                obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Password',
@@ -315,6 +315,7 @@ class _SignUpPageState extends State<SignUpPage> {
         'password': password,
         'bio': bio,
         'profile_pic_url': "",
+        'social_media': "instagram.com",
       }),
     );
   }
