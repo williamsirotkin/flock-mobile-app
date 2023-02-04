@@ -173,7 +173,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Country',
                 )),
           ),
-
+          Text(''),
           SizedBox(
             height: 50,
             width: 200,
@@ -281,7 +281,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => LoginPage(loginError: false)));
               },
-              
               child:
                   const Text('Create Account', style: TextStyle(fontSize: 22))),
           Text(' '),
@@ -320,4 +319,3 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
-
