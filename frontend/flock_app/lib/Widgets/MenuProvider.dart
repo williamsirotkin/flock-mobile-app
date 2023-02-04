@@ -10,6 +10,7 @@ import '../Pages/FriendsPage.dart';
 import '../Pages/SafetyPage.dart';
 import '../Pages/InboxPage.dart';
 import '../Pages/SettingsPage.dart';
+import './FetchUsernameWidget.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -24,7 +25,7 @@ class MenuProvider extends StatelessWidget {
         case 0:
           return ProfilePage();
         case 1:
-          return SwipePage();
+          return SwipePage(username: fetchUsername());
         case 2:
           return MyTripsPage();
         case 3:
