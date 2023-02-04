@@ -1,6 +1,7 @@
 import certifi
 import os
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
+
 MONGO_URI = os.environ['MONGO_URI']
-mongo = PyMongo(MONGO_URI)
-db = mongo.db
+client = MongoClient(MONGO_URI, certifi.where())
+db = client.db
