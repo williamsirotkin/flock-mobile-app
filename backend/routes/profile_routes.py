@@ -98,6 +98,15 @@ def like():
     except:
         return Response(status=403)
 
+@profile.route("/get_recommended_trips/<string:username>")
+def recommended_trips(username):
+
+    data = db.profile.find_one({"username" : username})
+    liker = data['liker']
+    recommended_trips = set()
+
+    
+
 @profile.route("/hate", methods=['PUT'])    
 def hate():
     data = request.json
