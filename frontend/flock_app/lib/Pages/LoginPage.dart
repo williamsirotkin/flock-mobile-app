@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 import './SwipePage.dart';
 import '../Widgets/MenuProvider.dart';
+import '../Calls/LoginCall.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -64,7 +65,10 @@ class LoginPage extends StatelessWidget {
                         ),
                         ),
                         ),
-                onPressed: () {print("Hello world"); Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4"))));},
+                onPressed: () {
+                  print("Hello world"); 
+                  login(username, password); 
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: "stephennemeth4"))));},
                 child: const Text('        Login       ')),
       ],
 
@@ -75,6 +79,5 @@ class LoginPage extends StatelessWidget {
       ]
     )
     );
-
   }
 }

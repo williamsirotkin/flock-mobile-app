@@ -41,7 +41,8 @@ class SwipePage extends StatelessWidget {
       children: [
         Swipe(child: Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 440),
         onSwipeLeft: () {
-          hate(Future.value("stephenenmeth4"), Future.value(username));
+          print("Swiped Left");
+          hate(Future.value("stephennemeth4"), Future.value(username));
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
   },
   onSwipeRight: () {
