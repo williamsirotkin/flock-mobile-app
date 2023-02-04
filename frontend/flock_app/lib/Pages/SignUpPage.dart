@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'package:image_picker/image_picker.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -321,7 +320,3 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 }
 
-
-      print(imagedetails["imageId"]);
-    }
-}
