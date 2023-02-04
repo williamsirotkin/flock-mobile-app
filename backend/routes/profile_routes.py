@@ -64,7 +64,8 @@ def add_profile():
         'profile_pic_url' : data['profile_pic_url'],
         'liker' : [],
         'hater' : [],
-        'password' : data['password']
+        'password' : data['password'],
+        'my_trips' : []
     }
 
     db.profile.insert_one(user)
@@ -122,6 +123,8 @@ def login():
         return Response(status=200)
     else:
         return Response(status=403)
+
+
 
 
 
