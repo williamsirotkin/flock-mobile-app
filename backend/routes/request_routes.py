@@ -15,7 +15,7 @@ def request_to_join():
     new_request = {
         "joinees_username" : data['joinees_username'],
         "leaders_username" : data['leaders_username'],
-        "trip_name" : data['trip_name'],
+        "trip_name" : data['name'],
     }
 
     try:
@@ -25,6 +25,29 @@ def request_to_join():
     except:
         return Response(status=403)
     
-@req.route("/accept")
+@req.route("/accept", methods=['PUT'])
 def accept():
-    pass
+    
+    data = request.json
+
+    username = data['joinee_username']
+    trip = data['name']
+
+    try:
+        db.trips.update_one({"name" : trip}, {'$push' : {'list_of_users' : username}})
+        db.requestToJoin.delete_one(data)
+        return Response(status=200)
+    except:
+        return Response(status=403)
+
+@req.route("/remove", methods=['PUT'])
+def remove():
+
+    data = request.json
+    username = data['joinee_username']
+    trip = data['name']
+    try:
+        db.trips.update_one({"name" : trip}, {'$pull' : {'list_of_users' : username}})
+        return Response(status=200)
+    except:
+        return Response(status=403)
