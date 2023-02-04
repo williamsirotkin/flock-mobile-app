@@ -31,3 +31,28 @@ def compare(interests1, interests2):
 
 def magnitude(vector):
     return np.sqrt(np.sum(vector ** 2))
+
+def retranslate(vector):
+    hashmap = {
+        0 : 'art-gallery',
+        1 : 'bar',
+        2 : 'gym',
+        3 : 'night_club',
+        4 : 'library',
+        5 : 'cafe',
+        6 : 'campgroun',
+        7 : 'casino',
+        8 : 'shopping_mall',
+        9 : 'park',
+        10 : 'museums',
+        11 : 'zoo',
+        12 : 'airport',
+        13 : 'bicycle_store'
+    }
+
+    newlist = []
+    for i in range(len(vector)):
+        if vector[i] == 1:
+            newlist.append(hashmap[i])
+    
+    return newlist

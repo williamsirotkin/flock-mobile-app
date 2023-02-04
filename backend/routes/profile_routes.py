@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, request, Response, jsonify
 import json
 from bson import json_util, ObjectId
 from db import db
-from utility.vectorizer import vectorize, compare
+from utility.vectorizer import vectorize, compare, retranslate
 import random
 
 #ph = PasswordHasher()
@@ -17,6 +17,8 @@ def profile_home():
 def get_profile(username):
 
     data = db.profile.find_one({'username' : username})
+    newvector = retranslate(data['interests'])
+    data['interests'] = newvector
     return json.loads(json_util.dumps(data))
 
 @profile.route("/getRandomUsername", methods = ['GET'])
