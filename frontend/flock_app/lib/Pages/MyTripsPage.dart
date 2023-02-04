@@ -16,6 +16,12 @@ class MyTripsPage extends StatelessWidget {
       children: [
         Center(child: Text("My Trips")),
         MyTripWidget(),
+        Text(" "),
+        MyTripWidget(),
+        Text(" "),
+        MyTripWidget(),
+        Text(" "),
+        MyTripWidget(),
       ],
     );
   }
