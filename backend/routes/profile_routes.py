@@ -95,8 +95,8 @@ def login():
 
     if password == user['password']:
         return Response(status=200)
-    else:
-        return Response(status=403)
+    
+    return Response(status=403)
 
 
 
