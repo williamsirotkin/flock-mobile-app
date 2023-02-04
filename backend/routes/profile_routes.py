@@ -47,7 +47,7 @@ def add_profile():
         'city' : data['city'],
         'country' : data['country'],
         'email' : data['email'],
-        'interests' : [],
+        'interests' : data['interests'],
         'last_name' : data['last_name'],
         'social_media' : [],
         'username' : data['username'],

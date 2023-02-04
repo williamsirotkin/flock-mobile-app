@@ -15,23 +15,6 @@ class SignUpPage extends StatefulWidget {
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
-enum APIValues {
-  art_gallery,
-  bar,
-  /*gym,
-  night_club,
-  library,
-  cafe,
-  campground,
-  casino,
-  shopping_mall,
-  park,
-  museum,
-  zoo,
-  airport,
-  bicycle_store*/
-}
-
 enum UserFacing {
   art,
   drinking,
@@ -49,7 +32,6 @@ enum UserFacing {
   biking*/
 }
 
-final Map<String, String> apiLookup = HashMap();
 final entries = {'art': 'art_gallery', 'drinking': 'bar'};
 
 class _SignUpPageState extends State<SignUpPage> {
@@ -60,6 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String password = "";
   String city = "";
   String country = "";
+  List<String> selectedInterests = <String>[];
   //String socialMediaLink = "";
   double age = 0;
   //String interests = [];
@@ -235,15 +218,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   textStyle: MaterialStateProperty.all(
                       const TextStyle(fontSize: 14, color: Colors.white))),
               onPressed: () {
-                List<String> selectedInterests = <String>[];
                 for (var i = 0; i < _filters.length; i++) {
-                  var currentElement = _filters[i];
-                  print(currentElement);
-                  var apiVal = apiLookup[currentElement];
-                  //print(apiVal);
+                  String currentElement = _filters[i];
+                  selectedInterests.add(entries[currentElement]!);
                 }
-                //interests = selectedInterests.toString();
-                //print(interests);
+                print(selectedInterests.toString());
                 createAlbum("newUser");
               },
               child:
@@ -259,11 +238,12 @@ class _SignUpPageState extends State<SignUpPage> {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{
+      body: jsonEncode(<String, Object>{
         'first_name': first_name,
         'city': city,
         'country': country,
         'email': email,
+        'interests': selectedInterests,
         'last_name': last_name,
         //'social_media': [],
         'username': username,
