@@ -18,7 +18,6 @@ class TripDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     futureTrip = fetchTrip();
-    print(futureTrip);
 
     return FutureBuilder<Trip>(
       future: futureTrip,
