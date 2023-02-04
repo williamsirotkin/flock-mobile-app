@@ -1,7 +1,8 @@
 from flask import Flask, Blueprint, request, Response
 import json
 from bson import json_util, ObjectId
-from db import db  
+from db import db
+from utility.vectorizer import vectorize, compare
 import random
 
 #ph = PasswordHasher()
@@ -54,7 +55,7 @@ def add_profile():
         'city' : data['city'],
         'country' : data['country'],
         'email' : data['email'],
-        'interests' : data['interests'],
+        'interests' : vectorize(data['interests']),
         'last_name' : data['last_name'],
         'social_media' : [],
         'username' : data['username'],
@@ -68,6 +69,20 @@ def add_profile():
 
     db.profile.insert_one(user)
     return Response(status=201)
+
+@profile.route("/recommend", methods=['GET'])
+def recommend():
+    data = request.json
+
+    username1 = data['username1']
+    username2 = data['username2']
+
+    interest1 = db.profile.find_one({'username' : username1}, {'interests': True})
+    print(interest1)
+    interest2 = db.profile.find_one({'username' : username2}, {'interests' : True})
+    print(interest2)
+
+    return json.dumps(compare(interest1['interests'], interest2['interests']) * 100)
 
 @profile.route("/like", methods=['PUT'])
 def like():
