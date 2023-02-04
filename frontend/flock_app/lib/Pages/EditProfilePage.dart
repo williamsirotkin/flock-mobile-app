@@ -4,6 +4,12 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 import './ProfilePage.dart';
 import '../Widgets/MenuProvider.dart';
+import 'package:path/path.dart';
+import 'package:async/async.dart';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+
+
 
 class EditProfilePage extends StatelessWidget {
   var user;
@@ -25,7 +31,7 @@ class EditProfilePage extends StatelessWidget {
                 onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (ProfilePage(user: user)), user: user)));},
                 child: const Text('Done')),
         Center (child: Text("My Profile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),)),
-        Text(" "),
+        
         Center (child: Text("Basic Info", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),)),
         Name(),
         BasicInfo(),
@@ -39,6 +45,7 @@ class EditProfilePage extends StatelessWidget {
                 onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (ProfilePage(user: user)), user: user)));},
                 child: const Text('Done')),
       ],
+      
     );
   }
 }

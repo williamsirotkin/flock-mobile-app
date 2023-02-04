@@ -10,19 +10,9 @@ class ChatWidget extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
+        Center(child: Text("Los Pollos Hermanos", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
         Text(" "),
-        Text(" "),
-        Text(" "),
-        Center(child: Text("Group Chat (Can be renamed)", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
-        Text(" "),
-        Text(" "),
-        Text(" "),
-        Text(" "),
-        ChatMessageWidget(),
-        Text(" "),
-        ChatMessageWidget(),
-        Text(" "),
-        ChatMessageWidget(),
+        Image(image: AssetImage('assets/images/GroupChat.png')),
         Text(" "),
         TextField(
   obscureText: false,
@@ -30,7 +20,12 @@ class ChatWidget extends StatelessWidget {
     border: OutlineInputBorder(),
     labelText: '',
   ),
-)
+),
+    Text(" "),
+    Text(" "),
+    Text(" "),
+    Text(" "),
+    Text(" "),
       ],
     );
   }

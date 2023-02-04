@@ -13,17 +13,33 @@ class MyTripWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-    color: Color.fromARGB(255, 190, 189, 189),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40.0),
+            bottomRight: Radius.circular(40.0),
+            topLeft: Radius.circular(40.0),
+            bottomLeft: Radius.circular(40.0)),
+            color: Color.fromARGB(255, 169, 199, 214),
+      ),
     child: ListView(
       shrinkWrap: true,
       children: [
-        Row(children: [
-          Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZteG1ce3_aHIp1-KASP59zOnKXT4DScQhikN4nxz9yPhl4ew02IIqXfwSexir1zMWr8Q&usqp=CAU", fit: BoxFit.cover, height: 125),
+        ClipRRect (
+     borderRadius: BorderRadius.circular(30.0),
+        child: Row(children: [
+        Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZteG1ce3_aHIp1-KASP59zOnKXT4DScQhikN4nxz9yPhl4ew02IIqXfwSexir1zMWr8Q&usqp=CAU",fit: BoxFit.cover, height: 125),
           Column(children: [
-            Text("Paris, France"),
-            Text("May 12th - May 21st"),
+            Text("  Paris, France", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(" ", style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),
+            Text("   May 12th - May 21st"),
+            Text(" ", style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold)),
             ElevatedButton(
                 style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)
+                        ),
+                  ),
                     backgroundColor: MaterialStateProperty.all(Colors.green),
                     padding:
                         MaterialStateProperty.all(const EdgeInsets.all(20)),
@@ -33,6 +49,7 @@ class MyTripWidget extends StatelessWidget {
                 child: const Text('View Trip')),
           ])
         ])
+        ),
       ],
     )
     );

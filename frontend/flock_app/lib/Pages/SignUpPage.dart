@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import 'package:flutter_spinbox/cupertino.dart';
@@ -262,7 +263,7 @@ class _SignUpPageState extends State<SignUpPage> {
         'country': country,
         'email': email,
         'last_name': last_name,
-        'interests': [1, 2],
+        'interests': selectedInterests,
         'username': username,
         'age': age.toString(),
         'password': password,

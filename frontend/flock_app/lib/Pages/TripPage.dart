@@ -19,7 +19,11 @@ class TripPage extends StatelessWidget {
       children: [
         BackButtonWidget(page: MyTripsPage()),
         ChatSettingsBarWidget(),
-      ChatWidget(),
+          ChatWidget(),
+          Text(" "),
+          Text(" "),
+          Text(" "),
+          Text(" "),
       ],
     );
   }

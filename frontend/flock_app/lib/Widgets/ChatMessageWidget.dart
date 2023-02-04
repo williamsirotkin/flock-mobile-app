@@ -13,13 +13,13 @@ class ChatMessageWidget extends StatelessWidget {
       children: [
         Row (
           children: [
-        SizedBox(
-            height: 30,
-          child: Container (
-          color: Colors.green,
-          child: 
-            Text("Message Goes Here")
-          )
+            Container (
+              color: Colors.green,
+              height: 50,
+        child: ClipRRect (
+          borderRadius: BorderRadius.circular(25),
+          child: Text("Message Goes Here", style: TextStyle(fontSize: 15))
+        ),
         ),
         Text("        "),
           ]

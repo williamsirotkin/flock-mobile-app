@@ -38,7 +38,8 @@ class SwipePage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Swipe(child: Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 440),
+        Swipe(child: 
+            Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 510),
         onSwipeLeft: () {
           print("Swiped Left");
           hate(Future.value(user), Future.value(username));

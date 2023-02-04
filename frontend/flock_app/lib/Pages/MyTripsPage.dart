@@ -16,7 +16,8 @@ class MyTripsPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Center(child: Text("My Trips")),
+        Center(child: Text("My Trips", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
+        Text("  "),
         MyTripWidget(),
         Text(" "),
         MyTripWidget(),
