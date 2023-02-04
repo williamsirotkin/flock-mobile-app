@@ -3,9 +3,6 @@ import json
 from bson import json_util, ObjectId
 from db import db  
 import random
-from argon2 import PasswordHasher
-
-ph = PasswordHasher()
 
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
@@ -95,8 +92,8 @@ def login():
     username = data['username']
     password = data['password']
     user = db.profile.find_one({'username' : username})
-    
-    if ph.verify(user['password'], password):
+
+    if password == user['password']:
         return Response(status=200)
     else:
         return Response(status=403)
