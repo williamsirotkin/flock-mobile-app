@@ -19,7 +19,17 @@ def get_trip(state):
 def update_itinerary():
     data = request.json
 
+    updated_itinerary = data['updated_itinerary']
+    trip = data['name']
+
+    try:
+        db.trip.update_one({'name' : trip}, {'itinerary' : update_itinerary})
+        return Response(status=200)
+    except:
+        return Response(status=403)
     
+
+
 @trip.route("/add")
 def add_to_trip():
     data = request.json
@@ -29,9 +39,9 @@ def add_to_trip():
 
     try:
         db.trips.update_one({'name' : trip}, {'$push' : {'list_of_users': username}})
-        return Response(200)
+        return Response(status=200)
     except:
-        return Response(403)
+        return Response(status=403)
 
 @trip.route("/create")
 def create_trip():
@@ -46,7 +56,8 @@ def create_trip():
         "destination" : data['destination'],
         "itinerary" : data['itinerary'],
         "requirments" : data['requirements'],
-        "description" : data['description']
+        "description" : data['description'],
+        "estimated_cost" : data['estimated_cost']
     }
 
     try:
