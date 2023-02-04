@@ -9,6 +9,7 @@ import '../Pages/FindTripsPage.dart';
 import '../Pages/FriendsPage.dart';
 import '../Pages/SafetyPage.dart';
 import '../Pages/InboxPage.dart';
+import '../Pages/SettingsPage.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -59,7 +60,7 @@ class MenuProvider extends StatelessWidget {
             child: Image(image: AssetImage('assets/images/inbox.png')),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SettingsPage())));},
             child: Image(image: AssetImage('assets/images/settings.png')),
           ),
         ],
