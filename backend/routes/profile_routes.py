@@ -2,7 +2,6 @@ from flask import Flask, Blueprint, request, Response
 import json
 from bson import json_util, ObjectId
 from db import db  
-import random
 
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
@@ -14,7 +13,7 @@ def profile_home():
 def get_profile(username):
 
     data = db.profile.find_one({'username' : username})
-    return json.loads(json_util.dumps(data))
+    return data
 
 @profile.route("/getRandomUsername", methods = ['GET'])
 def get_random_username():
@@ -31,6 +30,22 @@ def add_profile():
     }
     db.profile.save(user)
     return Response(status=201)
+
+@profile.route("/login")
+def login():
+
+    data = request.json
+    username = data['username']
+    password = data['password']
+    user = db.profile.find_one({'username' : username})
+
+    if password == argon2.hash_password(password):
+        return Response(status=200)
+    else:
+        return Response(status=403)
+
+
+
 
 
 
