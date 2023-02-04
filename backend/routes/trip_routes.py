@@ -57,7 +57,9 @@ def create_trip():
         "itinerary" : data['itinerary'],
         "requirments" : data['requirements'],
         "description" : data['description'],
-        "estimated_cost" : data['estimated_cost']
+        "estimated_cost" : data['estimated_cost'],
+        "start_date" : data['start_date'],
+        "end_data" : data['end_date']
     }
 
     try:

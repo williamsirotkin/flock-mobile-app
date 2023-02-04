@@ -1,13 +1,13 @@
 class Usernames {
-  final List<dynamic> usernames;
+  final String username;
 
   const Usernames({
-    required this.usernames,
+    required this.username,
   });
 
   factory Usernames.fromJson(Map<String, dynamic> json) {
     return Usernames(
-      usernames: json['usernames'],
+      username: json['username'],
     );
   }
 }

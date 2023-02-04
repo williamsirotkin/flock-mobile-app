@@ -6,18 +6,22 @@ import 'package:swipe/swipe.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../Models/Person.dart';
+import '../Widgets/MenuProvider.dart';
+import '../Models/Usernames.dart';
+import '../Widgets/FetchUsernameWidget.dart';
+
 
 class SwipePage extends StatelessWidget {
   var username;
-    SwipePage({this.username});
+  SwipePage({this.username});
   late Future<Person> futurePerson;
+  //late Future<Usernames> futureUsername;
 
    @override
   Widget build(BuildContext context) {
-   // var appState = context.watch<MyAppState>();
     Future<Person> fetchPerson() async {
   final response = await http
-      .get(Uri.parse('http://127.0.0.1:5000/profile/get/' + username));
+      .get(Uri.parse('http://127.0.0.1:5000/profile/get/' + await username));
         if (response.statusCode == 200) {
           // If the server did return a 200 OK response,
           // then parse the JSON.
@@ -36,11 +40,40 @@ class SwipePage extends StatelessWidget {
       children: [
         Swipe(child: Image.network("https://e0.pxfuel.com/wallpapers/920/682/desktop-wallpaper-high-resolution-michael-scott-lujayn-colebourn-michael-scott-the-office.jpg", fit: BoxFit.cover, height: 440),
         onSwipeLeft: () {
-          print("Swiped Left");
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
   },
   onSwipeRight: () {
-    print("Swiped Right");
-  },),
+    Future<http.Response> like() async {
+    return http.put(
+      Uri.parse('http://127.0.0.1:5000/profile/like'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'liker': "stephennemeth4",
+        'likee': await username,
+      }),
+    );
+  }
+  like();
+    /*
+    FutureBuilder<Usernames>(
+        future: fetchUsername(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            print("hello world");
+            print("snapshot.hasData");
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: snapshot.data!.username))));
+          } else {
+            print("WRONG");
+          }
+          return Text('Hi');
+        },
+    );
+    */
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: SwipePage(username: fetchUsername()))));
+  },
+  ),
       FutureBuilder<Person>(
         future: fetchPerson(),
         builder: (context, snapshot) {

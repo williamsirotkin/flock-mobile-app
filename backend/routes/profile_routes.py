@@ -54,19 +54,17 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
-        'likee' : [],
-        'hater' : [],
-        'hatee' : []
+        'likee' : []
     }
     db.profile.insert_one(user)
     return Response(status=201)
 
-@profile.route("/like")
+@profile.route("/like", methods=['PUT'])
 def like():
     data = request.json
 
-    liker = request['liker']
-    likee = request['likee']
+    liker = data['liker']
+    likee = data['likee']
 
     try:
         db.profile.update_one({'username' : liker}, {'$push' : {'liker' : likee}})
