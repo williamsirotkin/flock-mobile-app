@@ -56,6 +56,7 @@ def add_profile():
         'bio' : request['bio'],
         'profile_pic_url' : request['profile_pic_url'],
         'liker' : [],
+        'password' : ph.hash(request['password'])
     }
 
     db.profile.insert_one(user)
@@ -88,14 +89,14 @@ def hate():
         return Response(status=403)
 
 
-@profile.route("/login")
+@profile.route("/login", methods=['PUT'])
 def login():
     data = request.json
     username = data['username']
     password = data['password']
     user = db.profile.find_one({'username' : username})
-
-    if user['password'] == ph.hash(password):
+    
+    if ph.verify(user['password'], password):
         return Response(status=200)
     else:
         return Response(status=403)
