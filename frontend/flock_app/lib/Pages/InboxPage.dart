@@ -13,7 +13,20 @@ class InboxPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Text("Inbox Page")
+        Center(child: Text("My Inbox", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
+        Image(image: AssetImage('assets/images/inboxImage.png')),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
+        Text(" "),
       ],
     );
   }

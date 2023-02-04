@@ -8,6 +8,7 @@ import '../Widgets/SuggestedPlaceWidget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../Models/Trip.dart';
+import '../Widgets/ItineraryDayWidget.dart';
 
 class TripDetailsPage extends StatelessWidget {
   var user;
@@ -33,91 +34,70 @@ class TripDetailsPage extends StatelessWidget {
               body: ListView(
             padding: const EdgeInsets.all(8),
             children: <Widget>[
-              Text(""),
-              Container(
-                  height: 50,
-                  child: Center(
-                      child: Text(
-                    "Trip Name: " + snapshot.data!.name,
-                    style: TextStyle(fontSize: 40),
-                  ))),
               Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 40,
+               // color: Colors.blue[200],
                 child: Center(
-                    child: Text("Destination: " + snapshot.data!.destination,
-                        style: TextStyle(fontSize: 20))),
+                    child: Text("Trip to " + snapshot.data!.destination + "!",
+                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
               ),
-              Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+                //color: Colors.blue[200],
                 child: Center(
-                    child: Text("Description: " + snapshot.data!.description,
-                        style: TextStyle(fontSize: 20))),
+                    child: Text(snapshot.data!.description,
+                        style: TextStyle(fontSize: 16))),
               ),
-              Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+               // color: Colors.blue[200],
                 child: Center(
                     child: Text(
                         "Max Number of People: " + snapshot.data!.max_number,
-                        style: TextStyle(fontSize: 20))),
+                        style: TextStyle(fontSize: 16))),
               ),
-              Text(" "),
+
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+                //color: Colors.blue[200],
                 child: Center(
                     child: Text(
                         "Current Number of People: " +
                             snapshot.data!.current_number,
-                        style: TextStyle(fontSize: 20))),
+                        style: TextStyle(fontSize: 16))),
               ),
-              Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+                //color: Colors.blue[200],
                 child: Center(
                     child: Text("Group Leader: " + snapshot.data!.leader,
-                        style: TextStyle(fontSize: 20))),
+                        style: TextStyle(fontSize: 16))),
               ),
-              Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
-                child: Center(
-                    child: Text("Requirements: " + snapshot.data!.requirements,
-                        style: TextStyle(fontSize: 20))),
-              ),
-              Text(" "),
-              Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+                //color: Colors.blue[200],
                 child: Center(
                     child: Text(
                         "Estimated Cost: " + snapshot.data!.estimated_cost,
-                        style: TextStyle(fontSize: 20))),
+                        style: TextStyle(fontSize: 16))),
               ),
-              Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+                //color: Colors.blue[200],
                 child: Center(
                     child: Text("Start Date: " + snapshot.data!.start_date,
-                        style: TextStyle(fontSize: 20))),
+                        style: TextStyle(fontSize: 16))),
               ),
-              Text(" "),
               Container(
-                height: 50,
-                color: Colors.blue[200],
+                height: 20,
+               // color: Colors.blue[200],
                 child: Center(
                     child: Text("End Date: " + snapshot.data!.end_date,
-                        style: TextStyle(fontSize: 20))),
+                        style: TextStyle(fontSize: 16))),
               ),
               Text(""),
+              ItineraryDayWidget(dayAndNight: "day", numberDay: 1),
               ElevatedButton(
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
