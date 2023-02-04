@@ -3,9 +3,6 @@ import json
 from bson import json_util, ObjectId
 from db import db  
 import random
-import hashlib
-
-ph = PasswordHasher()
 
 profile = Blueprint("profile", __name__, url_prefix="/profile")
 
