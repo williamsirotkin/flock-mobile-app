@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../main.dart';
 import '../Pages/SwipePage.dart';
+import '../Pages/ProfilePage.dart';
 
 class MenuProvider extends StatelessWidget {
   var page;
@@ -15,7 +16,7 @@ class MenuProvider extends StatelessWidget {
     Widget getPage(int index) {
       switch(index) {
         case 0:
-          return SwipePage();
+          return ProfilePage();
         case 1:
           return SwipePage();
         case 2:
