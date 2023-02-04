@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, request, Response
+from flask import Flask, Blueprint, request, Response, jsonify
 import json
 from bson import json_util
 from db import db 
@@ -18,7 +18,21 @@ def get_trip(name):
         return Respone(status=200)
     except:
         return Response(status=403)
+
+@trip.route("/get_recommended/<string:username>", methods=['GET'])
+def get_recommended_trip(username):
+    print(username)
+    data = db.profile.find_one({"username" : username})
+    list_of_likes = data['liker']
+    print(list_of_likes)
+    recommended_trips = set()
+
+    for like in list_of_likes:
+        profile = db.profile.find_one({"username" : like})
+        recommended_trips.update(profile['my_trips'])
     
+    return jsonify(list(recommended_trips))
+
 @trip.route('/update_itinerary')
 def update_itinerary():
     data = request.json
@@ -31,8 +45,6 @@ def update_itinerary():
         return Response(status=200)
     except:
         return Response(status=403)
-    
-
 
 @trip.route("/add")
 def add_to_trip():
@@ -68,7 +80,7 @@ def create_trip():
 
     try:
         db.trips.insert_one(trip)
-        db.profile.update_one({'username' : data['usernam']}, {'$push'})
+        db.profile.update_one({'username' : data['username']}, {'$push' : {'my_trips' : data['name']}})
         return Response(status=201)
     except:
         return Response(status=403)
