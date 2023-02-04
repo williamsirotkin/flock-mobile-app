@@ -57,7 +57,7 @@ def add_profile():
         'email' : data['email'],
         'interests' : vectorize(data['interests']),
         'last_name' : data['last_name'],
-        'social_media' : [],
+        'social_media' : data['social_media'],
         'username' : data['username'],
         'age' : data['age'],
         'bio' : data['bio'],
