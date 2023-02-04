@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +18,7 @@ class SignUpPage extends StatefulWidget {
 enum APIValues {
   art_gallery,
   bar,
-  gym,
+  /*gym,
   night_club,
   library,
   cafe,
@@ -27,13 +29,13 @@ enum APIValues {
   museum,
   zoo,
   airport,
-  bicycle_store
+  bicycle_store*/
 }
 
 enum UserFacing {
   art,
   drinking,
-  gym,
+  /*gym,
   nightlife,
   learning,
   coffee,
@@ -44,8 +46,11 @@ enum UserFacing {
   museums,
   wildlife,
   aviation,
-  biking
+  biking*/
 }
+
+final Map<String, String> apiLookup = HashMap();
+final entries = {'art': 'art_gallery', 'drinking': 'bar'};
 
 class _SignUpPageState extends State<SignUpPage> {
   String firstName = "";
@@ -56,6 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String country = "";
   String socialMediaLink = "";
   double age = 0;
+  String interests = "";
   final List<String> _filters = <String>[];
 
   @override
@@ -228,6 +234,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   textStyle: MaterialStateProperty.all(
                       const TextStyle(fontSize: 14, color: Colors.white))),
               onPressed: () {
+                List<String> selectedInterests = <String>[];
+                for (var i = 0; i < _filters.length; i++) {
+                  var currentElement = _filters[i];
+                  var apiVal = apiLookup[currentElement];
+                  print(apiVal);
+                }
+                interests = selectedInterests.toString();
+                print(interests);
                 createAlbum("newUser");
               },
               child:
@@ -250,8 +264,9 @@ class _SignUpPageState extends State<SignUpPage> {
         'password': password,
         'city': city,
         'country': country,
-        'social': socialMediaLink,
-        'age': age.toString()
+        'socialMediaLink': socialMediaLink,
+        'age': age.toString(),
+        'interests': interests
       }),
     );
   }
