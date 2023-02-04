@@ -54,7 +54,6 @@ def create_trip():
         "list_of_users" : [data['username']],
         "leader" : data['username'],
         "destination" : data['destination'],
-        "itinerary" : data['itinerary'],
         "requirements" : data['requirements'],
         "description" : data['description'],
         "estimated_cost" : data['estimated_cost'],

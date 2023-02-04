@@ -9,6 +9,8 @@ import 'package:flutter_spinbox/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'LoginPage.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -27,10 +29,10 @@ enum UserFacing {
   gambling,
   shopping,
   hiking,
-  /*museums,
+  museums,
   wildlife,
   aviation,
-  biking*/
+  biking
 }
 
 final entries = {
@@ -58,6 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String password = "";
   String city = "";
   String country = "";
+  String bio = "";
   List<String> selectedInterests = <String>[];
   //String socialMediaLink = "";
   double age = 0;
@@ -68,7 +71,11 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+          child: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(" "),
+          Text(" "),
+          Text(' '),
           Image(image: AssetImage('assets/images/LoginPageImage.png')),
           SizedBox(
             height: 50,
@@ -83,6 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'First Name',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -96,12 +104,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Last Name',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
             child: TextField(
                 onChanged: (newText) {
-                  password = newText;
+                  username = newText;
                 },
                 obscureText: false,
                 decoration: InputDecoration(
@@ -109,6 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Username',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -122,6 +132,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Email',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -135,6 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Password',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -148,6 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'City',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -161,6 +174,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Country',
                 )),
           ),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -174,10 +188,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'Social Media Link',
                 )),
           ),
+          Text(" "),
           Row(
             children: [
               Text("                         "),
-              Text("Age:   "),
+              Text("Age:   ", style: TextStyle(fontSize: 15)),
               SizedBox(
                 height: 50,
                 width: 150,
@@ -190,10 +205,30 @@ class _SignUpPageState extends State<SignUpPage> {
               )
             ],
           ),
+          Text(" "),
+          SizedBox(
+            height: 100,
+            width: 300,
+            child: TextField(
+                minLines: 1,
+                maxLines: 5,
+                onChanged: (newText) {
+                  bio = newText;
+                },
+                obscureText: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Bio',
+                )),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('Interests:'),
+              Text(
+                'Interests:',
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(" "),
               const SizedBox(height: 5.0),
               Wrap(
                 spacing: 5.0,
@@ -219,7 +254,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 }).toList(),
               ),
               const SizedBox(height: 10.0),
-              Text('Looking for: ${_filters.join(', ')}')
+              Text('Your Interests: ${_filters.join(', ')}',
+                  style: TextStyle(fontSize: 15)),
+              Text(' ')
             ],
           ),
           ElevatedButton(
@@ -242,11 +279,20 @@ class _SignUpPageState extends State<SignUpPage> {
                 //interests = selectedInterests.toString();
                 //print(interests);
                 createAlbum("newUser");
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LoginPage(loginError: false)));
               },
               child:
-                  const Text('Create Account', style: TextStyle(fontSize: 22)))
+                  const Text('Create Account', style: TextStyle(fontSize: 22))),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
+          Text(' '),
         ]),
-      ),
+      )),
     );
   }
 
@@ -258,7 +304,7 @@ class _SignUpPageState extends State<SignUpPage> {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, Object>{
-        'first_name': "hi",
+        'first_name': first_name,
         'city': city,
         'country': country,
         'email': email,
@@ -267,7 +313,7 @@ class _SignUpPageState extends State<SignUpPage> {
         'username': username,
         'age': age.toString(),
         'password': password,
-        'bio': "",
+        'bio': bio,
         'profile_pic_url': "",
       }),
     );
