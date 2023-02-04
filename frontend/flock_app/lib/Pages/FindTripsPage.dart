@@ -15,7 +15,12 @@ class FindTripsPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-      Center(child: Text("Recommended Trips")),
+        Text(" "),
+      Center(child: Text("Recommended Trips For You", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+      Text(" "),
+      FindTripWidget(),
+      Text(" "),
+      FindTripWidget(),
       Text(" "),
       FindTripWidget(),
       Text(" "),

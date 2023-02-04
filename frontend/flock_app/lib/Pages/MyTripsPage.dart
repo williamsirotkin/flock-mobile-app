@@ -18,10 +18,13 @@ class MyTripsPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Center(
-            child: Text("My Trips",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
         Text("  "),
+         Row (
+            children: [
+              Center(
+            child: Text("                     My Trips",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+                Text("      "),
         ElevatedButton(
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -29,7 +32,7 @@ class MyTripsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25.0),
                 )),
                 backgroundColor:
-                    MaterialStateProperty.all(Color.fromARGB(255, 17, 219, 51)),
+                    MaterialStateProperty.all(Color.fromARGB(255, 44, 177, 66)),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
                 textStyle: MaterialStateProperty.all(
                     const TextStyle(fontSize: 14, color: Colors.white))),
@@ -38,7 +41,10 @@ class MyTripsPage extends StatelessWidget {
                   builder: (context) => MenuProvider(
                       page: CreateTripPage(user: user), user: user)));
             },
-            child: const Text('Add Trip', style: TextStyle(fontSize: 22))),
+            child: const Text('Create Trip +', style: TextStyle(fontSize: 18)),
+        ),
+                ]
+          ),
         Text(' '),
         MyTripWidget(),
         Text(" "),
@@ -46,6 +52,8 @@ class MyTripsPage extends StatelessWidget {
         Text(" "),
         MyTripWidget(),
         Text(" "),
+        MyTripWidget(),
+         Text(" "),
         MyTripWidget(),
       ],
     );

@@ -23,6 +23,8 @@ class ChatSettingsPage extends StatelessWidget {
         ChatMemberWidget(),
         ChatMemberWidget(),
         ChatMemberWidget(),
+        ChatMemberWidget(),
+        ChatMemberWidget(),
       ],
     );
   }

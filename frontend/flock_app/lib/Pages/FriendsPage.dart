@@ -13,7 +13,11 @@ class FriendsPage extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Center(child: Text("My Friends", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+        Text(" "),
+        Center(child: Text("My Friends", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+        Text(" "),
+        FriendWidget(),
+        FriendWidget(),
         FriendWidget(),
         FriendWidget(),
         FriendWidget(),

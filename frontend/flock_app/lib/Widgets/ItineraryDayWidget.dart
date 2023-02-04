@@ -17,7 +17,7 @@ class ItineraryDayWidget extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5FeO6J6NEl9Ek-eMuFWwsfMgTadTqliscOw&usqp=CAU", fit: BoxFit.cover, height: 225),
+        Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5FeO6J6NEl9Ek-eMuFWwsfMgTadTqliscOw&usqp=CAU", fit: BoxFit.cover, height: 325),
           Row (
           children: [
             Text("              "),

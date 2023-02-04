@@ -11,7 +11,6 @@ import '../Models/Usernames.dart';
 import '../Calls/FetchUsernameCall.dart';
 import '../Calls/LikeCall.dart';
 import '../Calls/HateCall.dart';
-import '../Widgets/RatingWidget.dart';
 
 class SwipePage extends StatelessWidget {
   var username, user;
@@ -99,7 +98,10 @@ class SwipePage extends StatelessWidget {
       ),
               Text("📍" + snapshot.data!.city + ", " + snapshot.data!.country, style: TextStyle(fontSize: 20)),
               Text(snapshot.data!.bio, style: TextStyle(fontSize: 20)),
-              RatingWidget("One of the best people I have ever traveled with! Super fun!", 5),
+              Row (children: [
+                Image(image: AssetImage('assets/images/jim-rating.png')),
+              ]
+              ),
             ]
             );
           } else if (snapshot.hasError) {

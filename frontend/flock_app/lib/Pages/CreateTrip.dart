@@ -5,7 +5,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-
+import '../Widgets/BackButtonWidget.dart';
+import './MyTripsPage.dart';
 import '../main.dart';
 
 class CreateTripPage extends StatelessWidget {
@@ -29,7 +30,9 @@ class CreateTripPage extends StatelessWidget {
       body: Center(
           child: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          BackButtonWidget(page: MyTripsPage()),
           Text('Create a trip!', style: TextStyle(fontSize: 30)),
+          Text(" "),
           SizedBox(
             height: 50,
             width: 200,
@@ -178,8 +181,8 @@ class CreateTripPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25.0),
                   )),
                   backgroundColor: MaterialStateProperty.all(
-                      Color.fromARGB(255, 17, 219, 51)),
-                  padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                      Color.fromARGB(255, 50, 195, 75)),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(15)),
                   textStyle: MaterialStateProperty.all(
                       const TextStyle(fontSize: 14, color: Colors.white))),
               onPressed: () {

@@ -26,7 +26,7 @@ class ItineraryNavBarWidget extends StatelessWidget {
             onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: ItineraryPage(dayAndNight: "Day", numberDay: 1))));},
             child: const Text(' My Trip Itinerary', style: TextStyle(fontSize: 19)),
           ),
-          Text("    "),
+          Text("  |  "),
         TextButton(
             style: TextButton.styleFrom(
               textStyle: const TextStyle(fontSize: 20),

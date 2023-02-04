@@ -21,6 +21,8 @@ class RequestsPage extends StatelessWidget {
          RequestWidget(),
           RequestWidget(),
            RequestWidget(),
+                     RequestWidget(),
+           RequestWidget(),
       ],
     );
   }

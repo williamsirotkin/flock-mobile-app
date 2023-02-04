@@ -12,15 +12,24 @@ class BackButtonWidget extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        ElevatedButton(
+        Row (
+          children: [
+        Text(" "), 
+        ClipRRect (
+            borderRadius: BorderRadius.circular(25),
+        child: ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.grey),
+                    backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 179, 177, 177)),
                     padding:
-                        MaterialStateProperty.all(const EdgeInsets.all(20)),
+                        MaterialStateProperty.all(const EdgeInsets.all(10)),
                     textStyle: MaterialStateProperty.all(
                         const TextStyle(fontSize: 14, color: Colors.white))),
                 onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => MenuProvider(page: (page))));},
                 child: const Text('<- Go Back')),
+        ),
+      Text(" "),
+      ],
+    )
       ],
     );
   }
