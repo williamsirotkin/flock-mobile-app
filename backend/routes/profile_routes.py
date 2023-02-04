@@ -30,7 +30,7 @@ def get_profiles():
                            {'username' : {'$nin': ["likee"]}}
                            , {'username' : {'$nin': ["hatee"]}})
 
-    db.profile.find
+    return json.loads(json_util.dumps(random.choice(list(data))))
 
 #queries users based on certain input conditions
 @profile.route("/getProfileQuery", methods = ['GET'])
