@@ -15,6 +15,24 @@ def get_trip(state):
     data = db.trip.find_one({'state': state})
     return json.loads(json_util.dumps(data))
 
+@trip.route('/update_itinerary')
+def update_itinerary():
+    data = request.json
+
+    
+@trip.route("/add")
+def add_to_trip():
+    data = request.json
+
+    trip = data['name']
+    username = data['username']
+
+    try:
+        db.trips.update_one({'name' : trip}, {'$push' : {'list_of_users': username}})
+        return Response(200)
+    except:
+        return Response(403)
+
 @trip.route("/create")
 def create_trip():
     data = request.json
